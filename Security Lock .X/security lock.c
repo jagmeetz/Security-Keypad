@@ -5,8 +5,7 @@
 
 
 /*
- * Referenec used :
- *
+ * Referenec used : https://circuitdigest.com/microcontroller-projects/16x2-lcd-interfacing-with-pic-microcontroller
  */
 
 
@@ -39,6 +38,7 @@
 
 int input[5];
 
+//stored password
 int pass[4] = {
 	1,
 	2,
@@ -46,6 +46,7 @@ int pass[4] = {
 	4
 };
 
+//function to check which button from keypad was pressed
 void get_colm(int i)
 {
 	while (1) {
