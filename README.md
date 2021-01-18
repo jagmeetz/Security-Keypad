@@ -1,5 +1,6 @@
 # Security-Lock
 Simple Keypad lock which displays "Correct" on screen when right password is typed and "Incorrect" when wrong password is typed. I made this project as a submission for my 6 week industrial training in 2nd year of my degree. This is the first project I ever made. It was completed after a lot of tries and later function of backspace was also added. Also in latest code, when the user types the password, they need to press a switch to know whether password is correct or not.
+Timeline of this project - 10/2019-11/2019
 
 # Software Used 
 * MPLAB X IDE
