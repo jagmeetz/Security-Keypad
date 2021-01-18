@@ -4,3 +4,5 @@
 *.xml linguist-detectable=false
 *.d linguist-detectable=false
 *.bash linguist-detectable=false
+SWIG linguist-detectable=false
+MakeFile linguist-detectable=false
