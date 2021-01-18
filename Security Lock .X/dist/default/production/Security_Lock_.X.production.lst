@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.20 build 20200408173844 
-                                                                                               Mon Jan 18 16:03:56 2021
+                                                                                               Mon Jan 18 16:47:22 2021
 
 Microchip MPLAB XC8 C Compiler v2.20 (Free license) build 20200408173844 Og1 
      1                           	processor	16F877A
@@ -484,7 +484,7 @@ Microchip MPLAB XC8 C Compiler v2.20 (Free license) build 20200408173844 Og1
    470 ;;
    471 ;; *************** function _main *****************
    472 ;; Defined at:
-   473 ;;		line 231 in file "security lock.c"
+   473 ;;		line 232 in file "security lock.c"
    474 ;; Parameters:    Size  Location     Type
    475 ;;		None
    476 ;; Auto vars:     Size  Location     Type
@@ -525,55 +525,54 @@ Microchip MPLAB XC8 C Compiler v2.20 (Free license) build 20200408173844 Og1
    511                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
    512                           
    513                           
-   514                           ;security lock.c: 233:  while (1) {;security lock.c: 234:   get_colm(4);
+   514                           ;security lock.c: 234: ;security lock.c: 235:  while (1) {
    515  066B  1683               	bsf	3,5	;RP0=1, select bank1
    516  066C  1303               	bcf	3,6	;RP1=0, select bank1
    517  066D  0188               	clrf	8	;volatile
    518                           
-   519                           ;security lock.c: 235: 
+   519                           ;security lock.c: 236:   get_colm(4);
    520  066E  0186               	clrf	6	;volatile
    521  066F                     l1122:
    522                           
-   523                           ;security lock.c: 236:   if (input[4] == 12) {
+   523                           ;security lock.c: 237: 
    524  066F  300F               	movlw	15
    525  0670  0087               	movwf	7	;volatile
    526  0671                     l1124:
    527                           
-   528                           ;security lock.c: 237:    if (input[0] == pass[0] && input[1] == pass[1] && input[2] == 
-      +                          pass[2] && input[3] == pass[3]) {
+   528                           ;security lock.c: 238:   if (input[4] == 12) {
    529  0671  1283               	bcf	3,5	;RP0=0, select bank0
    530  0672  1303               	bcf	3,6	;RP1=0, select bank0
    531  0673  0186               	clrf	6	;volatile
    532  0674                     l1126:
    533                           
-   534                           ;security lock.c: 239:     lcd_clear();
+   534                           ;security lock.c: 240: 
    535  0674  120A  118A  24BD  120A  118A  	fcall	_lcd_start
    536  0679                     l1128:
    537                           
-   538                           ;security lock.c: 240:     lcd_set_cursor(1, 1);
+   538                           ;security lock.c: 241:     lcd_clear();
    539  0679  120A  118A  23EA  120A  118A  	fcall	_lcd_clear
    540  067E                     l1130:
    541                           
-   542                           ;security lock.c: 241:     lcd_print_string("Correct");
+   542                           ;security lock.c: 242:     lcd_set_cursor(1, 1);
    543  067E  01F4               	clrf	lcd_set_cursor@b
    544  067F  0AF4               	incf	lcd_set_cursor@b,f
    545  0680  3001               	movlw	1
    546  0681  120A  118A  246B  120A  118A  	fcall	_lcd_set_cursor
    547  0686                     l1132:
    548                           
-   549                           ;security lock.c: 242: 
+   549                           ;security lock.c: 243:     lcd_print_string("Correct");
    550  0686  3001               	movlw	(low ((STR_1-__stringbase)| (0+32768)))& (0+255)
    551  0687  120A  118A  2446  120A  118A  	fcall	_lcd_print_string
    552  068C                     l1134:
    553                           
-   554                           ;security lock.c: 244: 
+   554                           ;security lock.c: 245:     PORTB = 0x80;
    555  068C  1283               	bcf	3,5	;RP0=0, select bank0
    556  068D  1303               	bcf	3,6	;RP1=0, select bank0
    557  068E  01B7               	clrf	main@j
    558  068F  01B8               	clrf	main@j+1
    559  0690                     l1136:
    560                           
-   561                           ;security lock.c: 247:     break;
+   561                           ;security lock.c: 248: 
    562  0690  1283               	bcf	3,5	;RP0=0, select bank0
    563  0691  1303               	bcf	3,6	;RP1=0, select bank0
    564  0692  0838               	movf	main@j+1,w
@@ -594,7 +593,7 @@ Microchip MPLAB XC8 C Compiler v2.20 (Free license) build 20200408173844 Og1
    579  069F                     u840:
    580  069F                     l1138:
    581                           
-   582                           ;security lock.c: 248:    } else {;security lock.c: 249:     lcd_clear();
+   582                           ;security lock.c: 249:     break;;security lock.c: 250:    } else {
    583  069F  3001               	movlw	1
    584  06A0  1283               	bcf	3,5	;RP0=0, select bank0
    585  06A1  1303               	bcf	3,6	;RP1=0, select bank0
@@ -603,7 +602,7 @@ Microchip MPLAB XC8 C Compiler v2.20 (Free license) build 20200408173844 Og1
    588  06A4  00B6               	movwf	main@y+1
    589  06A5                     l1144:
    590                           
-   591                           ;security lock.c: 250:     lcd_set_cursor(1, 1);
+   591                           ;security lock.c: 251:     lcd_clear();
    592  06A5  1283               	bcf	3,5	;RP0=0, select bank0
    593  06A6  1303               	bcf	3,6	;RP1=0, select bank0
    594  06A7  0838               	movf	main@j+1,w
@@ -613,7 +612,7 @@ Microchip MPLAB XC8 C Compiler v2.20 (Free license) build 20200408173844 Og1
    598  06AB  120A  118A  2571  120A  118A  	fcall	_get_colm
    599  06B0                     l1146:
    600                           
-   601                           ;security lock.c: 251:     lcd_print_string("Incorrect");
+   601                           ;security lock.c: 252:     lcd_set_cursor(1, 1);
    602  06B0  1283               	bcf	3,5	;RP0=0, select bank0
    603  06B1  1303               	bcf	3,6	;RP1=0, select bank0
    604  06B2  0837               	movf	main@j,w
@@ -662,7 +661,7 @@ Microchip MPLAB XC8 C Compiler v2.20 (Free license) build 20200408173844 Og1
    647  06D8                     u860:
    648  06D8                     l1150:
    649                           
-   650                           ;security lock.c: 252: 
+   650                           ;security lock.c: 253:     lcd_print_string("Incorrect");
    651  06D8  1283               	bcf	3,5	;RP0=0, select bank0
    652  06D9  1303               	bcf	3,6	;RP1=0, select bank0
    653  06DA  0835               	movf	main@y,w
@@ -673,12 +672,12 @@ Microchip MPLAB XC8 C Compiler v2.20 (Free license) build 20200408173844 Og1
    658  06DF  120A  118A  246B  120A  118A  	fcall	_lcd_set_cursor
    659  06E4                     l1152:
    660                           
-   661                           ;security lock.c: 253:     PORTB = 0x02;
+   661                           ;security lock.c: 254: 
    662  06E4  3024               	movlw	(low ((STR_2-__stringbase)| (0+32768)))& (0+255)
    663  06E5  120A  118A  2446  120A  118A  	fcall	_lcd_print_string
    664  06EA                     l1154:
    665                           
-   666                           ;security lock.c: 254: 
+   666                           ;security lock.c: 255:     PORTB = 0x02;
    667  06EA  3001               	movlw	1
    668  06EB  1283               	bcf	3,5	;RP0=0, select bank0
    669  06EC  1303               	bcf	3,6	;RP1=0, select bank0
@@ -688,7 +687,7 @@ Microchip MPLAB XC8 C Compiler v2.20 (Free license) build 20200408173844 Og1
    673  06F0  3000               	movlw	0
    674  06F1  07B8               	addwf	main@j+1,f
    675                           
-   676                           ;security lock.c: 255:     _delay((unsigned long)((1100)*(20000000/4000.0)));
+   676                           ;security lock.c: 256: 
    677  06F2  2F44               	goto	l147
    678  06F3                     l1156:
    679  06F3  1283               	bcf	3,5	;RP0=0, select bank0
@@ -734,7 +733,7 @@ Microchip MPLAB XC8 C Compiler v2.20 (Free license) build 20200408173844 Og1
    719  0716                     u880:
    720  0716                     l1160:
    721                           
-   722                           ;security lock.c: 256: 
+   722                           ;security lock.c: 257:     _delay((unsigned long)((1100)*(20000000/4000.0)));
    723  0716  30FF               	movlw	255
    724  0717  07B5               	addwf	main@y,f
    725  0718  1803               	skipnc
@@ -743,7 +742,7 @@ Microchip MPLAB XC8 C Compiler v2.20 (Free license) build 20200408173844 Og1
    728  071B  07B6               	addwf	main@y+1,f
    729  071C                     l1162:
    730                           
-   731                           ;security lock.c: 258:    }
+   731                           ;security lock.c: 259:     break;
    732  071C  0835               	movf	main@y,w
    733  071D  00FF               	movwf	btemp+1
    734  071E  087F               	movf	btemp+1,w
@@ -752,12 +751,12 @@ Microchip MPLAB XC8 C Compiler v2.20 (Free license) build 20200408173844 Og1
    737  0721  120A  118A  246B  120A  118A  	fcall	_lcd_set_cursor
    738  0726                     l1164:
    739                           
-   740                           ;security lock.c: 259:   } else {
+   740                           ;security lock.c: 260:    }
    741  0726  3022               	movlw	(low ((STR_3-__stringbase)| (0+32768)))& (0+255)
    742  0727  120A  118A  2446  120A  118A  	fcall	_lcd_print_string
    743  072C                     l1166:
    744                           
-   745                           ;security lock.c: 261:   }
+   745                           ;security lock.c: 262:    __nop();
    746  072C  30FF               	movlw	255
    747  072D  1283               	bcf	3,5	;RP0=0, select bank0
    748  072E  1303               	bcf	3,6	;RP1=0, select bank0
@@ -768,7 +767,7 @@ Microchip MPLAB XC8 C Compiler v2.20 (Free license) build 20200408173844 Og1
    753  0733  07B6               	addwf	main@y+1,f
    754  0734                     l1168:
    755                           
-   756                           ;security lock.c: 262:  }
+   756                           ;security lock.c: 263:   }
    757  0734  30FF               	movlw	255
    758  0735  07B7               	addwf	main@j,f
    759  0736  1803               	skipnc
@@ -776,1533 +775,1534 @@ Microchip MPLAB XC8 C Compiler v2.20 (Free license) build 20200408173844 Og1
    761  0738  30FF               	movlw	255
    762  0739  07B8               	addwf	main@j+1,f
    763                           
-   764                           ;security lock.c: 263:  return 0;
+   764                           ;security lock.c: 264:  }
    765  073A  2F44               	goto	l147
    766  073B                     l148:
    767                           
-   768                           ;security lock.c: 264: }
+   768                           ;security lock.c: 265:  return 0;
    769  073B  0000               	nop
    770  073C                     l1170:
-   771  073C  30FF               	movlw	255
-   772  073D  1283               	bcf	3,5	;RP0=0, select bank0
-   773  073E  1303               	bcf	3,6	;RP1=0, select bank0
-   774  073F  07B5               	addwf	main@y,f
-   775  0740  1803               	skipnc
-   776  0741  0AB6               	incf	main@y+1,f
-   777  0742  30FF               	movlw	255
-   778  0743  07B6               	addwf	main@y+1,f
-   779  0744                     l147:
-   780  0744  3001               	movlw	1
-   781  0745  07B5               	addwf	main@y,f
-   782  0746  1803               	skipnc
-   783  0747  0AB6               	incf	main@y+1,f
-   784  0748  3000               	movlw	0
-   785  0749  07B6               	addwf	main@y+1,f
-   786  074A                     l1172:
-   787  074A  0836               	movf	main@y+1,w
-   788  074B  3A80               	xorlw	128
-   789  074C  00FF               	movwf	btemp+1
-   790  074D  3080               	movlw	128
-   791  074E  027F               	subwf	btemp+1,w
-   792  074F  1D03               	skipz
-   793  0750  2F53               	goto	u895
-   794  0751  3005               	movlw	5
-   795  0752  0235               	subwf	main@y,w
-   796  0753                     u895:
-   797  0753  1C03               	skipc
-   798  0754  2F56               	goto	u891
-   799  0755  2F57               	goto	u890
-   800  0756                     u891:
-   801  0756  2EA5               	goto	l1144
-   802  0757                     u890:
-   803  0757  2E90               	goto	l1136
-   804  0758                     l1174:
-   805  0758  3004               	movlw	4
-   806  0759  00F0               	movwf	get_colm@i
-   807  075A  3000               	movlw	0
-   808  075B  00F1               	movwf	get_colm@i+1
-   809  075C  120A  118A  2571  120A  118A  	fcall	_get_colm
-   810  0761                     l1176:
-   811  0761  300C               	movlw	12
-   812  0762  1283               	bcf	3,5	;RP0=0, select bank0
-   813  0763  1303               	bcf	3,6	;RP1=0, select bank0
-   814  0764  0628               	xorwf	_input+8,w
-   815  0765  0429               	iorwf	_input+9,w
-   816  0766  1D03               	btfss	3,2
-   817  0767  2F69               	goto	u901
-   818  0768  2F6A               	goto	u900
-   819  0769                     u901:
-   820  0769  2FDF               	goto	l154
-   821  076A                     u900:
-   822  076A                     l1178:
-   823  076A  082B               	movf	_pass+1,w
-   824  076B  0621               	xorwf	_input+1,w
-   825  076C  1D03               	skipz
-   826  076D  2F70               	goto	u915
-   827  076E  082A               	movf	_pass,w
-   828  076F  0620               	xorwf	_input,w
-   829  0770                     u915:
-   830  0770  1D03               	skipz
-   831  0771  2F73               	goto	u911
-   832  0772  2F74               	goto	u910
-   833  0773                     u911:
-   834  0773  2FB8               	goto	l1198
-   835  0774                     u910:
-   836  0774                     l1180:
-   837  0774  082D               	movf	_pass+3,w
-   838  0775  0623               	xorwf	_input+3,w
-   839  0776  1D03               	skipz
-   840  0777  2F7A               	goto	u925
-   841  0778  082C               	movf	_pass+2,w
-   842  0779  0622               	xorwf	_input+2,w
-   843  077A                     u925:
-   844  077A  1D03               	skipz
-   845  077B  2F7D               	goto	u921
-   846  077C  2F7E               	goto	u920
-   847  077D                     u921:
-   848  077D  2FB8               	goto	l1198
-   849  077E                     u920:
-   850  077E                     l1182:
-   851  077E  082F               	movf	_pass+5,w
-   852  077F  0625               	xorwf	_input+5,w
-   853  0780  1D03               	skipz
-   854  0781  2F84               	goto	u935
-   855  0782  082E               	movf	_pass+4,w
-   856  0783  0624               	xorwf	_input+4,w
-   857  0784                     u935:
-   858  0784  1D03               	skipz
-   859  0785  2F87               	goto	u931
-   860  0786  2F88               	goto	u930
-   861  0787                     u931:
-   862  0787  2FB8               	goto	l1198
-   863  0788                     u930:
-   864  0788                     l1184:
-   865  0788  0831               	movf	_pass+7,w
-   866  0789  0627               	xorwf	_input+7,w
-   867  078A  1D03               	skipz
-   868  078B  2F8E               	goto	u945
-   869  078C  0830               	movf	_pass+6,w
-   870  078D  0626               	xorwf	_input+6,w
-   871  078E                     u945:
-   872  078E  1D03               	skipz
-   873  078F  2F91               	goto	u941
-   874  0790  2F92               	goto	u940
-   875  0791                     u941:
-   876  0791  2FB8               	goto	l1198
-   877  0792                     u940:
-   878  0792                     l1186:
-   879  0792  120A  118A  23EA  120A  118A  	fcall	_lcd_clear
-   880  0797                     l1188:
-   881  0797  01F4               	clrf	lcd_set_cursor@b
-   882  0798  0AF4               	incf	lcd_set_cursor@b,f
-   883  0799  3001               	movlw	1
-   884  079A  120A  118A  246B  120A  118A  	fcall	_lcd_set_cursor
-   885  079F                     l1190:
-   886  079F  301A               	movlw	(low ((STR_4-__stringbase)| (0+32768)))& (0+255)
-   887  07A0  120A  118A  2446  120A  118A  	fcall	_lcd_print_string
-   888  07A5                     l1192:
-   889  07A5  3080               	movlw	128
-   890  07A6  1283               	bcf	3,5	;RP0=0, select bank0
-   891  07A7  1303               	bcf	3,6	;RP1=0, select bank0
-   892  07A8  0086               	movwf	6	;volatile
-   893  07A9                     l1194:
-   894  07A9  30FE               	movlw	254
-   895  07AA  1283               	bcf	3,5	;RP0=0, select bank0
-   896  07AB  1303               	bcf	3,6	;RP1=0, select bank0
-   897  07AC  00B4               	movwf	??_main+2
-   898  07AD  30A7               	movlw	167
-   899  07AE  00B3               	movwf	??_main+1
-   900  07AF  3065               	movlw	101
-   901  07B0  00B2               	movwf	??_main
-   902  07B1                     u957:
-   903  07B1  0BB2               	decfsz	??_main,f
-   904  07B2  2FB1               	goto	u957
-   905  07B3  0BB3               	decfsz	??_main+1,f
-   906  07B4  2FB1               	goto	u957
-   907  07B5  0BB4               	decfsz	??_main+2,f
-   908  07B6  2FB1               	goto	u957
-   909  07B7  2FE1               	goto	l160
-   910  07B8                     l1198:
-   911  07B8  120A  118A  23EA  120A  118A  	fcall	_lcd_clear
-   912  07BD                     l1200:
-   913  07BD  01F4               	clrf	lcd_set_cursor@b
-   914  07BE  0AF4               	incf	lcd_set_cursor@b,f
-   915  07BF  3001               	movlw	1
-   916  07C0  120A  118A  246B  120A  118A  	fcall	_lcd_set_cursor
-   917  07C5                     l1202:
-   918  07C5  3010               	movlw	(low ((STR_5-__stringbase)| (0+32768)))& (0+255)
-   919  07C6  120A  118A  2446  120A  118A  	fcall	_lcd_print_string
-   920  07CB                     l1204:
-   921  07CB  3002               	movlw	2
-   922  07CC  1283               	bcf	3,5	;RP0=0, select bank0
-   923  07CD  1303               	bcf	3,6	;RP1=0, select bank0
-   924  07CE  0086               	movwf	6	;volatile
-   925  07CF                     l1206:
-   926  07CF  301C               	movlw	28
-   927  07D0  1283               	bcf	3,5	;RP0=0, select bank0
-   928  07D1  1303               	bcf	3,6	;RP1=0, select bank0
-   929  07D2  00B4               	movwf	??_main+2
-   930  07D3  30E7               	movlw	231
-   931  07D4  00B3               	movwf	??_main+1
-   932  07D5  30C6               	movlw	198
-   933  07D6  00B2               	movwf	??_main
-   934  07D7                     u967:
-   935  07D7  0BB2               	decfsz	??_main,f
-   936  07D8  2FD7               	goto	u967
-   937  07D9  0BB3               	decfsz	??_main+1,f
-   938  07DA  2FD7               	goto	u967
-   939  07DB  0BB4               	decfsz	??_main+2,f
-   940  07DC  2FD7               	goto	u967
-   941  07DD  0000               	nop
-   942  07DE  2FE1               	goto	l160
-   943  07DF                     l154:
-   944  07DF  0000               	nop
-   945  07E0  2F58               	goto	l1174
-   946  07E1                     l160:
-   947  07E1  120A  118A  2800   	ljmp	start
-   948  07E4                     __end_of_main:
-   949                           
-   950                           	psect	text1
-   951  04BD                     __ptext1:	
-   952 ;; *************** function _lcd_start *****************
-   953 ;; Defined at:
-   954 ;;		line 188 in file "security lock.c"
-   955 ;; Parameters:    Size  Location     Type
-   956 ;;		None
-   957 ;; Auto vars:     Size  Location     Type
-   958 ;;  i               2    0        int 
-   959 ;; Return value:  Size  Location     Type
-   960 ;;                  1    wreg      void 
-   961 ;; Registers used:
-   962 ;;		wreg, status,2, status,0, pclath, cstack
-   963 ;; Tracked objects:
-   964 ;;		On entry : 0/0
-   965 ;;		On exit  : 0/0
-   966 ;;		Unchanged: 0/0
-   967 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   968 ;;      Params:         0       0       0       0       0
-   969 ;;      Locals:         2       0       0       0       0
-   970 ;;      Temps:          2       0       0       0       0
-   971 ;;      Totals:         4       0       0       0       0
-   972 ;;Total ram usage:        4 bytes
-   973 ;; Hardware stack levels used:    1
-   974 ;; Hardware stack levels required when called:    2
-   975 ;; This function calls:
-   976 ;;		_lcd_cmd
-   977 ;;		_lcd_setbit
-   978 ;; This function is called by:
-   979 ;;		_main
-   980 ;; This function uses a non-reentrant model
-   981 ;;
-   982                           
-   983                           
-   984                           ;psect for function _lcd_start
-   985  04BD                     _lcd_start:
-   986  04BD                     l1078:	
-   987                           ;incstack = 0
-   988                           ; Regs used in _lcd_start: [wreg+status,2+status,0+pclath+cstack]
-   989                           
-   990                           
-   991                           ;security lock.c: 190: 
-   992  04BD  3000               	movlw	0
-   993  04BE  120A  118A  2424  120A  118A  	fcall	_lcd_setbit
-   994  04C3                     l1080:
-   995  04C3                     l1082:
-   996  04C3                     l1090:
-   997                           
-   998                           ;security lock.c: 194:  TRISD = 0x00;
-   999  04C3  3003               	movlw	3
-  1000  04C4  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
-  1001  04C9                     l1092:
-  1002                           
-  1003                           ;security lock.c: 195:  TRISB = 0x00;
-  1004  04C9  3021               	movlw	33
-  1005  04CA  00F5               	movwf	??_lcd_start+1
-  1006  04CB  3076               	movlw	118
-  1007  04CC  00F4               	movwf	??_lcd_start
-  1008  04CD                     u977:
-  1009  04CD  0BF4               	decfsz	??_lcd_start,f
-  1010  04CE  2CCD               	goto	u977
-  1011  04CF  0BF5               	decfsz	??_lcd_start+1,f
-  1012  04D0  2CCD               	goto	u977
-  1013  04D1  0000               	nop
-  1014  04D2                     l1094:
-  1015                           
-  1016                           ;security lock.c: 196:  TRISC = 0X0F;
-  1017  04D2  3003               	movlw	3
-  1018  04D3  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
-  1019                           
-  1020                           ;security lock.c: 197:  PORTB = 0x00;
-  1021  04D8  3048               	movlw	72
-  1022  04D9  00F5               	movwf	??_lcd_start+1
-  1023  04DA  306C               	movlw	108
-  1024  04DB  00F4               	movwf	??_lcd_start
-  1025  04DC                     u987:
-  1026  04DC  0BF4               	decfsz	??_lcd_start,f
-  1027  04DD  2CDC               	goto	u987
-  1028  04DE  0BF5               	decfsz	??_lcd_start+1,f
-  1029  04DF  2CDC               	goto	u987
-  1030  04E0  0000               	nop
-  1031  04E1                     l1096:
-  1032                           
-  1033                           ;security lock.c: 198: 
-  1034  04E1  3003               	movlw	3
-  1035  04E2  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
-  1036  04E7                     l1098:
-  1037                           
-  1038                           ;security lock.c: 199:  lcd_start();
-  1039  04E7  3002               	movlw	2
-  1040  04E8  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
-  1041  04ED                     l1100:
-  1042                           
-  1043                           ;security lock.c: 200:  lcd_clear();
-  1044  04ED  3002               	movlw	2
-  1045  04EE  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
-  1046  04F3                     l1102:
-  1047                           
-  1048                           ;security lock.c: 201:  lcd_set_cursor(1, 1);
-  1049  04F3  3008               	movlw	8
-  1050  04F4  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
-  1051  04F9                     l1104:
-  1052                           
-  1053                           ;security lock.c: 202:  lcd_print_string("Input Password");
-  1054  04F9  3000               	movlw	0
-  1055  04FA  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
-  1056  04FF                     l1106:
-  1057                           
-  1058                           ;security lock.c: 203: 
-  1059  04FF  300C               	movlw	12
-  1060  0500  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
-  1061  0505                     l1108:
-  1062                           
-  1063                           ;security lock.c: 204:  int j = 0;
-  1064  0505  3000               	movlw	0
-  1065  0506  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
-  1066  050B                     l1110:
-  1067                           
-  1068                           ;security lock.c: 205: 
-  1069  050B  3006               	movlw	6
-  1070  050C  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
-  1071  0511                     l124:
-  1072  0511  0008               	return
-  1073  0512                     __end_of_lcd_start:
-  1074                           
-  1075                           	psect	text2
-  1076  046B                     __ptext2:	
-  1077 ;; *************** function _lcd_set_cursor *****************
-  1078 ;; Defined at:
-  1079 ;;		line 170 in file "security lock.c"
-  1080 ;; Parameters:    Size  Location     Type
-  1081 ;;  a               1    wreg     unsigned char 
-  1082 ;;  b               1    4[COMMON] unsigned char 
-  1083 ;; Auto vars:     Size  Location     Type
-  1084 ;;  a               1    6[COMMON] unsigned char 
-  1085 ;;  temp            1    9[COMMON] unsigned char 
-  1086 ;;  y               1    8[COMMON] unsigned char 
-  1087 ;;  z               1    7[COMMON] unsigned char 
-  1088 ;; Return value:  Size  Location     Type
-  1089 ;;                  1    wreg      void 
-  1090 ;; Registers used:
-  1091 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
-  1092 ;; Tracked objects:
-  1093 ;;		On entry : 0/0
-  1094 ;;		On exit  : 0/0
-  1095 ;;		Unchanged: 0/0
-  1096 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-  1097 ;;      Params:         1       0       0       0       0
-  1098 ;;      Locals:         4       0       0       0       0
-  1099 ;;      Temps:          1       0       0       0       0
-  1100 ;;      Totals:         6       0       0       0       0
-  1101 ;;Total ram usage:        6 bytes
-  1102 ;; Hardware stack levels used:    1
-  1103 ;; Hardware stack levels required when called:    2
-  1104 ;; This function calls:
-  1105 ;;		_lcd_cmd
-  1106 ;; This function is called by:
-  1107 ;;		_main
-  1108 ;; This function uses a non-reentrant model
-  1109 ;;
-  1110                           
-  1111                           
-  1112                           ;psect for function _lcd_set_cursor
-  1113  046B                     _lcd_set_cursor:
-  1114                           
-  1115                           ;incstack = 0
-  1116                           ; Regs used in _lcd_set_cursor: [wreg+status,2+status,0+btemp+1+pclath+cstack]
-  1117                           ;lcd_set_cursor@a stored from wreg
-  1118  046B  00F6               	movwf	lcd_set_cursor@a
-  1119  046C                     l1058:
-  1120                           
-  1121                           ;security lock.c: 170:  char lower_nibble, upper_nibble;;security lock.c: 171:  lower_ni
-      +                          bble = data & 0x0F;;security lock.c: 172:  upper_nibble = data & 0xF0;;security lock.c: 
-      +                          173:  RD2 = 1;
-  1122  046C  0376               	decf	lcd_set_cursor@a,w
-  1123  046D  1D03               	btfss	3,2
-  1124  046E  2C70               	goto	u791
-  1125  046F  2C71               	goto	u790
-  1126  0470                     u791:
-  1127  0470  2C94               	goto	l1068
-  1128  0471                     u790:
-  1129  0471                     l1060:
-  1130                           
-  1131                           ;security lock.c: 174:  lcd_setbit(upper_nibble >> 4);
-  1132  0471  0874               	movf	lcd_set_cursor@b,w
-  1133  0472  3E7F               	addlw	127
-  1134  0473  00FF               	movwf	btemp+1
-  1135  0474  087F               	movf	btemp+1,w
-  1136  0475  00F9               	movwf	lcd_set_cursor@temp
-  1137                           
-  1138                           ;security lock.c: 175:  RD3 = 1;
-  1139  0476  0879               	movf	lcd_set_cursor@temp,w
-  1140  0477  00F5               	movwf	??_lcd_set_cursor
-  1141  0478  3004               	movlw	4
-  1142  0479                     u805:
-  1143  0479  1003               	clrc
-  1144  047A  0CF5               	rrf	??_lcd_set_cursor,f
-  1145  047B  3EFF               	addlw	-1
-  1146  047C  1D03               	skipz
-  1147  047D  2C79               	goto	u805
-  1148  047E  0875               	movf	??_lcd_set_cursor,w
-  1149  047F  00FF               	movwf	btemp+1
-  1150  0480  087F               	movf	btemp+1,w
-  1151  0481  00F7               	movwf	lcd_set_cursor@z
-  1152  0482                     l1062:
-  1153                           
-  1154                           ;security lock.c: 176:  for (int i = 2130483; i <= 0; i--) __nop();
-  1155  0482  0879               	movf	lcd_set_cursor@temp,w
-  1156  0483  390F               	andlw	15
-  1157  0484  00FF               	movwf	btemp+1
-  1158  0485  087F               	movf	btemp+1,w
-  1159  0486  00F8               	movwf	lcd_set_cursor@y
-  1160  0487                     l1064:
-  1161                           
-  1162                           ;security lock.c: 177:  RD3 = 0;
-  1163  0487  0877               	movf	lcd_set_cursor@z,w
-  1164  0488  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
-  1165  048D                     l1066:
-  1166                           
-  1167                           ;security lock.c: 178:  lcd_setbit(lower_nibble);
-  1168  048D  0878               	movf	lcd_set_cursor@y,w
-  1169  048E  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
-  1170                           
-  1171                           ;security lock.c: 179:  RD3 = 1;
-  1172  0493  2CBC               	goto	l119
-  1173  0494                     l1068:
-  1174  0494  3002               	movlw	2
-  1175  0495  0676               	xorwf	lcd_set_cursor@a,w
-  1176  0496  1D03               	btfss	3,2
-  1177  0497  2C99               	goto	u811
-  1178  0498  2C9A               	goto	u810
-  1179  0499                     u811:
-  1180  0499  2CBC               	goto	l119
-  1181  049A                     u810:
-  1182  049A                     l1070:
-  1183                           
-  1184                           ;security lock.c: 180:  for (int i = 2130483; i <= 0; i--) __nop();
-  1185  049A  0874               	movf	lcd_set_cursor@b,w
-  1186  049B  3EBF               	addlw	191
-  1187  049C  00FF               	movwf	btemp+1
-  1188  049D  087F               	movf	btemp+1,w
-  1189  049E  00F9               	movwf	lcd_set_cursor@temp
-  1190                           
-  1191                           ;security lock.c: 181:  RD3 = 0;
-  1192  049F  0879               	movf	lcd_set_cursor@temp,w
-  1193  04A0  00F5               	movwf	??_lcd_set_cursor
-  1194  04A1  3004               	movlw	4
-  1195  04A2                     u825:
-  1196  04A2  1003               	clrc
-  1197  04A3  0CF5               	rrf	??_lcd_set_cursor,f
-  1198  04A4  3EFF               	addlw	-1
-  1199  04A5  1D03               	skipz
-  1200  04A6  2CA2               	goto	u825
-  1201  04A7  0875               	movf	??_lcd_set_cursor,w
-  1202  04A8  00FF               	movwf	btemp+1
-  1203  04A9  087F               	movf	btemp+1,w
-  1204  04AA  00F7               	movwf	lcd_set_cursor@z
-  1205  04AB                     l1072:
-  1206                           
-  1207                           ;security lock.c: 182: }
-  1208  04AB  0879               	movf	lcd_set_cursor@temp,w
-  1209  04AC  390F               	andlw	15
-  1210  04AD  00FF               	movwf	btemp+1
-  1211  04AE  087F               	movf	btemp+1,w
-  1212  04AF  00F8               	movwf	lcd_set_cursor@y
-  1213  04B0                     l1074:
-  1214                           
-  1215                           ;security lock.c: 183: 
-  1216  04B0  0877               	movf	lcd_set_cursor@z,w
-  1217  04B1  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
-  1218  04B6                     l1076:
-  1219                           
-  1220                           ;security lock.c: 184: void lcd_print_string(char * a)
-  1221  04B6  0878               	movf	lcd_set_cursor@y,w
-  1222  04B7  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
-  1223  04BC                     l119:
-  1224  04BC  0008               	return
-  1225  04BD                     __end_of_lcd_set_cursor:
-  1226                           
-  1227                           	psect	text3
-  1228  0446                     __ptext3:	
-  1229 ;; *************** function _lcd_print_string *****************
-  1230 ;; Defined at:
-  1231 ;;		line 224 in file "security lock.c"
-  1232 ;; Parameters:    Size  Location     Type
-  1233 ;;  a               1    wreg     PTR unsigned char 
-  1234 ;;		 -> STR_5(10), STR_4(8), STR_3(2), STR_2(2), 
-  1235 ;;		 -> STR_1(15), 
-  1236 ;; Auto vars:     Size  Location     Type
-  1237 ;;  a               1   11[COMMON] PTR unsigned char 
-  1238 ;;		 -> STR_5(10), STR_4(8), STR_3(2), STR_2(2), 
-  1239 ;;		 -> STR_1(15), 
-  1240 ;;  i               2    9[COMMON] int 
-  1241 ;; Return value:  Size  Location     Type
-  1242 ;;                  1    wreg      void 
-  1243 ;; Registers used:
-  1244 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
-  1245 ;; Tracked objects:
-  1246 ;;		On entry : 0/0
-  1247 ;;		On exit  : 0/0
-  1248 ;;		Unchanged: 0/0
-  1249 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-  1250 ;;      Params:         0       0       0       0       0
-  1251 ;;      Locals:         3       0       0       0       0
-  1252 ;;      Temps:          0       0       0       0       0
-  1253 ;;      Totals:         3       0       0       0       0
-  1254 ;;Total ram usage:        3 bytes
-  1255 ;; Hardware stack levels used:    1
-  1256 ;; Hardware stack levels required when called:    2
-  1257 ;; This function calls:
-  1258 ;;		_lcd_print_char
-  1259 ;; This function is called by:
-  1260 ;;		_main
-  1261 ;; This function uses a non-reentrant model
-  1262 ;;
-  1263                           
-  1264                           
-  1265                           ;psect for function _lcd_print_string
-  1266  0446                     _lcd_print_string:
-  1267                           
-  1268                           ;incstack = 0
-  1269                           ; Regs used in _lcd_print_string: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
-  1270                           ;lcd_print_string@a stored from wreg
-  1271  0446  00FB               	movwf	lcd_print_string@a
-  1272  0447                     l1112:
-  1273                           
-  1274                           ;security lock.c: 224:      __nop();;security lock.c: 225:      y--;;security lock.c: 22
-      +                          6:     };security lock.c: 227:    }
-  1275  0447  01F9               	clrf	lcd_print_string@i
-  1276  0448  01FA               	clrf	lcd_print_string@i+1
-  1277  0449  2C5D               	goto	l1118
-  1278  044A                     l1114:
-  1279                           
-  1280                           ;security lock.c: 228:   } else {
-  1281  044A  0879               	movf	lcd_print_string@i,w
-  1282  044B  077B               	addwf	lcd_print_string@a,w
-  1283  044C  0084               	movwf	4
-  1284  044D  120A  118A  2003  120A  118A  	fcall	stringdir
-  1285  0452  120A  118A  2512  120A  118A  	fcall	_lcd_print_char
-  1286  0457                     l1116:
-  1287  0457  3001               	movlw	1
-  1288  0458  07F9               	addwf	lcd_print_string@i,f
-  1289  0459  1803               	skipnc
-  1290  045A  0AFA               	incf	lcd_print_string@i+1,f
-  1291  045B  3000               	movlw	0
-  1292  045C  07FA               	addwf	lcd_print_string@i+1,f
-  1293  045D                     l1118:
-  1294  045D  0879               	movf	lcd_print_string@i,w
-  1295  045E  077B               	addwf	lcd_print_string@a,w
-  1296  045F  0084               	movwf	4
-  1297  0460  120A  118A  2003  120A  118A  	fcall	stringdir
-  1298  0465  3A00               	xorlw	0
-  1299  0466  1D03               	skipz
-  1300  0467  2C69               	goto	u831
-  1301  0468  2C6A               	goto	u830
-  1302  0469                     u831:
-  1303  0469  2C4A               	goto	l1114
-  1304  046A                     u830:
-  1305  046A                     l137:
-  1306  046A  0008               	return
-  1307  046B                     __end_of_lcd_print_string:
-  1308                           
-  1309                           	psect	text4
-  1310  0512                     __ptext4:	
-  1311 ;; *************** function _lcd_print_char *****************
-  1312 ;; Defined at:
-  1313 ;;		line 208 in file "security lock.c"
-  1314 ;; Parameters:    Size  Location     Type
-  1315 ;;  data            1    wreg     unsigned char 
-  1316 ;; Auto vars:     Size  Location     Type
-  1317 ;;  data            1    4[COMMON] unsigned char 
-  1318 ;;  i               2    7[COMMON] int 
-  1319 ;;  i               2    5[COMMON] int 
-  1320 ;;  upper_nibble    1    3[COMMON] unsigned char 
-  1321 ;;  lower_nibble    1    2[COMMON] unsigned char 
-  1322 ;; Return value:  Size  Location     Type
-  1323 ;;                  1    wreg      void 
-  1324 ;; Registers used:
-  1325 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
-  1326 ;; Tracked objects:
-  1327 ;;		On entry : 0/0
-  1328 ;;		On exit  : 0/0
-  1329 ;;		Unchanged: 0/0
-  1330 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-  1331 ;;      Params:         0       0       0       0       0
-  1332 ;;      Locals:         7       0       0       0       0
-  1333 ;;      Temps:          1       0       0       0       0
-  1334 ;;      Totals:         8       0       0       0       0
-  1335 ;;Total ram usage:        8 bytes
-  1336 ;; Hardware stack levels used:    1
-  1337 ;; Hardware stack levels required when called:    1
-  1338 ;; This function calls:
-  1339 ;;		_lcd_setbit
-  1340 ;; This function is called by:
-  1341 ;;		_lcd_print_string
-  1342 ;; This function uses a non-reentrant model
-  1343 ;;
-  1344                           
-  1345                           
-  1346                           ;psect for function _lcd_print_char
-  1347  0512                     _lcd_print_char:
-  1348                           
-  1349                           ;incstack = 0
-  1350                           ; Regs used in _lcd_print_char: [wreg+status,2+status,0+btemp+1+pclath+cstack]
-  1351                           ;lcd_print_char@data stored from wreg
-  1352  0512  00F4               	movwf	lcd_print_char@data
-  1353  0513                     l1000:
-  1354                           
-  1355                           ;security lock.c: 208:    int y;;security lock.c: 209:    for (y = 1; y <= 4; y++) {;sec
-      +                          urity lock.c: 210:     get_colm(j);;security lock.c: 211:     if (input[j] >= 0 && input
-      +                          [j] <= 9) {
-  1356  0513  0874               	movf	lcd_print_char@data,w
-  1357  0514  390F               	andlw	15
-  1358  0515  00FF               	movwf	btemp+1
-  1359  0516  087F               	movf	btemp+1,w
-  1360  0517  00F2               	movwf	lcd_print_char@lower_nibble
-  1361                           
-  1362                           ;security lock.c: 212:      lcd_set_cursor(2, y);
-  1363  0518  0874               	movf	lcd_print_char@data,w
-  1364  0519  39F0               	andlw	240
-  1365  051A  00FF               	movwf	btemp+1
-  1366  051B  087F               	movf	btemp+1,w
-  1367  051C  00F3               	movwf	lcd_print_char@upper_nibble
-  1368  051D                     l1002:
-  1369                           
-  1370                           ;security lock.c: 213:      lcd_print_string("*");
-  1371  051D  1283               	bcf	3,5	;RP0=0, select bank0
-  1372  051E  1303               	bcf	3,6	;RP1=0, select bank0
-  1373  051F  1508               	bsf	8,2	;volatile
-  1374  0520                     l1004:
-  1375                           
-  1376                           ;security lock.c: 214:      j++;
-  1377  0520  0873               	movf	lcd_print_char@upper_nibble,w
-  1378  0521  00F1               	movwf	??_lcd_print_char
-  1379  0522  3004               	movlw	4
-  1380  0523                     u525:
-  1381  0523  1003               	clrc
-  1382  0524  0CF1               	rrf	??_lcd_print_char,f
-  1383  0525  3EFF               	addlw	-1
-  1384  0526  1D03               	skipz
-  1385  0527  2D23               	goto	u525
-  1386  0528  0871               	movf	??_lcd_print_char,w
-  1387  0529  120A  118A  2424  120A  118A  	fcall	_lcd_setbit
-  1388  052E                     l1006:
-  1389                           
-  1390                           ;security lock.c: 215:     } else if (j >= 1 && input[j] == 11) {
-  1391  052E  1283               	bcf	3,5	;RP0=0, select bank0
-  1392  052F  1303               	bcf	3,6	;RP1=0, select bank0
-  1393  0530  1588               	bsf	8,3	;volatile
-  1394  0531                     l1008:
-  1395                           
-  1396                           ;security lock.c: 216:      y--;
-  1397  0531  3033               	movlw	51
-  1398  0532  00F5               	movwf	lcd_print_char@i
-  1399  0533  3082               	movlw	130
-  1400  0534  00F6               	movwf	lcd_print_char@i+1
-  1401  0535                     l127:
-  1402  0535  0000               	nop
-  1403  0536                     l1014:
-  1404  0536  30FF               	movlw	255
-  1405  0537  07F5               	addwf	lcd_print_char@i,f
-  1406  0538  1803               	skipnc
-  1407  0539  0AF6               	incf	lcd_print_char@i+1,f
-  1408  053A  30FF               	movlw	255
-  1409  053B  07F6               	addwf	lcd_print_char@i+1,f
-  1410  053C                     l1016:
-  1411  053C  0876               	movf	lcd_print_char@i+1,w
-  1412  053D  3A80               	xorlw	128
-  1413  053E  00FF               	movwf	btemp+1
-  1414  053F  3080               	movlw	128
-  1415  0540  027F               	subwf	btemp+1,w
-  1416  0541  1D03               	skipz
-  1417  0542  2D45               	goto	u535
-  1418  0543  3001               	movlw	1
-  1419  0544  0275               	subwf	lcd_print_char@i,w
-  1420  0545                     u535:
-  1421  0545  1C03               	skipc
-  1422  0546  2D48               	goto	u531
-  1423  0547  2D49               	goto	u530
-  1424  0548                     u531:
-  1425  0548  2D35               	goto	l127
-  1426  0549                     u530:
-  1427  0549                     l128:
-  1428                           
-  1429                           ;security lock.c: 217: 
-  1430  0549  1283               	bcf	3,5	;RP0=0, select bank0
-  1431  054A  1303               	bcf	3,6	;RP1=0, select bank0
-  1432  054B  1188               	bcf	8,3	;volatile
-  1433  054C                     l1018:
-  1434                           
-  1435                           ;security lock.c: 218:      lcd_set_cursor(2, y);
-  1436  054C  0872               	movf	lcd_print_char@lower_nibble,w
-  1437  054D  120A  118A  2424  120A  118A  	fcall	_lcd_setbit
-  1438  0552                     l1020:
-  1439                           
-  1440                           ;security lock.c: 219:      lcd_print_string(" ");
-  1441  0552  1283               	bcf	3,5	;RP0=0, select bank0
-  1442  0553  1303               	bcf	3,6	;RP1=0, select bank0
-  1443  0554  1588               	bsf	8,3	;volatile
-  1444  0555                     l1022:
-  1445                           
-  1446                           ;security lock.c: 220: 
-  1447  0555  3033               	movlw	51
-  1448  0556  00F7               	movwf	lcd_print_char@i_73
-  1449  0557  3082               	movlw	130
-  1450  0558  00F8               	movwf	lcd_print_char@i_73+1
-  1451  0559                     l129:
-  1452  0559  0000               	nop
-  1453  055A                     l1028:
-  1454  055A  30FF               	movlw	255
-  1455  055B  07F7               	addwf	lcd_print_char@i_73,f
-  1456  055C  1803               	skipnc
-  1457  055D  0AF8               	incf	lcd_print_char@i_73+1,f
-  1458  055E  30FF               	movlw	255
-  1459  055F  07F8               	addwf	lcd_print_char@i_73+1,f
-  1460  0560                     l1030:
-  1461  0560  0878               	movf	lcd_print_char@i_73+1,w
-  1462  0561  3A80               	xorlw	128
-  1463  0562  00FF               	movwf	btemp+1
-  1464  0563  3080               	movlw	128
-  1465  0564  027F               	subwf	btemp+1,w
-  1466  0565  1D03               	skipz
-  1467  0566  2D69               	goto	u545
-  1468  0567  3001               	movlw	1
-  1469  0568  0277               	subwf	lcd_print_char@i_73,w
-  1470  0569                     u545:
-  1471  0569  1C03               	skipc
-  1472  056A  2D6C               	goto	u541
-  1473  056B  2D6D               	goto	u540
-  1474  056C                     u541:
-  1475  056C  2D59               	goto	l129
-  1476  056D                     u540:
-  1477  056D                     l130:
-  1478                           
-  1479                           ;security lock.c: 221:      y--;
-  1480  056D  1283               	bcf	3,5	;RP0=0, select bank0
-  1481  056E  1303               	bcf	3,6	;RP1=0, select bank0
-  1482  056F  1188               	bcf	8,3	;volatile
-  1483  0570                     l131:
-  1484  0570  0008               	return
-  1485  0571                     __end_of_lcd_print_char:
-  1486                           
-  1487                           	psect	text5
-  1488  03EA                     __ptext5:	
-  1489 ;; *************** function _lcd_clear *****************
-  1490 ;; Defined at:
-  1491 ;;		line 164 in file "security lock.c"
-  1492 ;; Parameters:    Size  Location     Type
-  1493 ;;		None
-  1494 ;; Auto vars:     Size  Location     Type
+   771                           
+   772                           ;security lock.c: 266: }
+   773  073C  30FF               	movlw	255
+   774  073D  1283               	bcf	3,5	;RP0=0, select bank0
+   775  073E  1303               	bcf	3,6	;RP1=0, select bank0
+   776  073F  07B5               	addwf	main@y,f
+   777  0740  1803               	skipnc
+   778  0741  0AB6               	incf	main@y+1,f
+   779  0742  30FF               	movlw	255
+   780  0743  07B6               	addwf	main@y+1,f
+   781  0744                     l147:
+   782  0744  3001               	movlw	1
+   783  0745  07B5               	addwf	main@y,f
+   784  0746  1803               	skipnc
+   785  0747  0AB6               	incf	main@y+1,f
+   786  0748  3000               	movlw	0
+   787  0749  07B6               	addwf	main@y+1,f
+   788  074A                     l1172:
+   789  074A  0836               	movf	main@y+1,w
+   790  074B  3A80               	xorlw	128
+   791  074C  00FF               	movwf	btemp+1
+   792  074D  3080               	movlw	128
+   793  074E  027F               	subwf	btemp+1,w
+   794  074F  1D03               	skipz
+   795  0750  2F53               	goto	u895
+   796  0751  3005               	movlw	5
+   797  0752  0235               	subwf	main@y,w
+   798  0753                     u895:
+   799  0753  1C03               	skipc
+   800  0754  2F56               	goto	u891
+   801  0755  2F57               	goto	u890
+   802  0756                     u891:
+   803  0756  2EA5               	goto	l1144
+   804  0757                     u890:
+   805  0757  2E90               	goto	l1136
+   806  0758                     l1174:
+   807  0758  3004               	movlw	4
+   808  0759  00F0               	movwf	get_colm@i
+   809  075A  3000               	movlw	0
+   810  075B  00F1               	movwf	get_colm@i+1
+   811  075C  120A  118A  2571  120A  118A  	fcall	_get_colm
+   812  0761                     l1176:
+   813  0761  300C               	movlw	12
+   814  0762  1283               	bcf	3,5	;RP0=0, select bank0
+   815  0763  1303               	bcf	3,6	;RP1=0, select bank0
+   816  0764  0628               	xorwf	_input+8,w
+   817  0765  0429               	iorwf	_input+9,w
+   818  0766  1D03               	btfss	3,2
+   819  0767  2F69               	goto	u901
+   820  0768  2F6A               	goto	u900
+   821  0769                     u901:
+   822  0769  2FDF               	goto	l154
+   823  076A                     u900:
+   824  076A                     l1178:
+   825  076A  082B               	movf	_pass+1,w
+   826  076B  0621               	xorwf	_input+1,w
+   827  076C  1D03               	skipz
+   828  076D  2F70               	goto	u915
+   829  076E  082A               	movf	_pass,w
+   830  076F  0620               	xorwf	_input,w
+   831  0770                     u915:
+   832  0770  1D03               	skipz
+   833  0771  2F73               	goto	u911
+   834  0772  2F74               	goto	u910
+   835  0773                     u911:
+   836  0773  2FB8               	goto	l1198
+   837  0774                     u910:
+   838  0774                     l1180:
+   839  0774  082D               	movf	_pass+3,w
+   840  0775  0623               	xorwf	_input+3,w
+   841  0776  1D03               	skipz
+   842  0777  2F7A               	goto	u925
+   843  0778  082C               	movf	_pass+2,w
+   844  0779  0622               	xorwf	_input+2,w
+   845  077A                     u925:
+   846  077A  1D03               	skipz
+   847  077B  2F7D               	goto	u921
+   848  077C  2F7E               	goto	u920
+   849  077D                     u921:
+   850  077D  2FB8               	goto	l1198
+   851  077E                     u920:
+   852  077E                     l1182:
+   853  077E  082F               	movf	_pass+5,w
+   854  077F  0625               	xorwf	_input+5,w
+   855  0780  1D03               	skipz
+   856  0781  2F84               	goto	u935
+   857  0782  082E               	movf	_pass+4,w
+   858  0783  0624               	xorwf	_input+4,w
+   859  0784                     u935:
+   860  0784  1D03               	skipz
+   861  0785  2F87               	goto	u931
+   862  0786  2F88               	goto	u930
+   863  0787                     u931:
+   864  0787  2FB8               	goto	l1198
+   865  0788                     u930:
+   866  0788                     l1184:
+   867  0788  0831               	movf	_pass+7,w
+   868  0789  0627               	xorwf	_input+7,w
+   869  078A  1D03               	skipz
+   870  078B  2F8E               	goto	u945
+   871  078C  0830               	movf	_pass+6,w
+   872  078D  0626               	xorwf	_input+6,w
+   873  078E                     u945:
+   874  078E  1D03               	skipz
+   875  078F  2F91               	goto	u941
+   876  0790  2F92               	goto	u940
+   877  0791                     u941:
+   878  0791  2FB8               	goto	l1198
+   879  0792                     u940:
+   880  0792                     l1186:
+   881  0792  120A  118A  23EA  120A  118A  	fcall	_lcd_clear
+   882  0797                     l1188:
+   883  0797  01F4               	clrf	lcd_set_cursor@b
+   884  0798  0AF4               	incf	lcd_set_cursor@b,f
+   885  0799  3001               	movlw	1
+   886  079A  120A  118A  246B  120A  118A  	fcall	_lcd_set_cursor
+   887  079F                     l1190:
+   888  079F  301A               	movlw	(low ((STR_4-__stringbase)| (0+32768)))& (0+255)
+   889  07A0  120A  118A  2446  120A  118A  	fcall	_lcd_print_string
+   890  07A5                     l1192:
+   891  07A5  3080               	movlw	128
+   892  07A6  1283               	bcf	3,5	;RP0=0, select bank0
+   893  07A7  1303               	bcf	3,6	;RP1=0, select bank0
+   894  07A8  0086               	movwf	6	;volatile
+   895  07A9                     l1194:
+   896  07A9  30FE               	movlw	254
+   897  07AA  1283               	bcf	3,5	;RP0=0, select bank0
+   898  07AB  1303               	bcf	3,6	;RP1=0, select bank0
+   899  07AC  00B4               	movwf	??_main+2
+   900  07AD  30A7               	movlw	167
+   901  07AE  00B3               	movwf	??_main+1
+   902  07AF  3065               	movlw	101
+   903  07B0  00B2               	movwf	??_main
+   904  07B1                     u957:
+   905  07B1  0BB2               	decfsz	??_main,f
+   906  07B2  2FB1               	goto	u957
+   907  07B3  0BB3               	decfsz	??_main+1,f
+   908  07B4  2FB1               	goto	u957
+   909  07B5  0BB4               	decfsz	??_main+2,f
+   910  07B6  2FB1               	goto	u957
+   911  07B7  2FE1               	goto	l160
+   912  07B8                     l1198:
+   913  07B8  120A  118A  23EA  120A  118A  	fcall	_lcd_clear
+   914  07BD                     l1200:
+   915  07BD  01F4               	clrf	lcd_set_cursor@b
+   916  07BE  0AF4               	incf	lcd_set_cursor@b,f
+   917  07BF  3001               	movlw	1
+   918  07C0  120A  118A  246B  120A  118A  	fcall	_lcd_set_cursor
+   919  07C5                     l1202:
+   920  07C5  3010               	movlw	(low ((STR_5-__stringbase)| (0+32768)))& (0+255)
+   921  07C6  120A  118A  2446  120A  118A  	fcall	_lcd_print_string
+   922  07CB                     l1204:
+   923  07CB  3002               	movlw	2
+   924  07CC  1283               	bcf	3,5	;RP0=0, select bank0
+   925  07CD  1303               	bcf	3,6	;RP1=0, select bank0
+   926  07CE  0086               	movwf	6	;volatile
+   927  07CF                     l1206:
+   928  07CF  301C               	movlw	28
+   929  07D0  1283               	bcf	3,5	;RP0=0, select bank0
+   930  07D1  1303               	bcf	3,6	;RP1=0, select bank0
+   931  07D2  00B4               	movwf	??_main+2
+   932  07D3  30E7               	movlw	231
+   933  07D4  00B3               	movwf	??_main+1
+   934  07D5  30C6               	movlw	198
+   935  07D6  00B2               	movwf	??_main
+   936  07D7                     u967:
+   937  07D7  0BB2               	decfsz	??_main,f
+   938  07D8  2FD7               	goto	u967
+   939  07D9  0BB3               	decfsz	??_main+1,f
+   940  07DA  2FD7               	goto	u967
+   941  07DB  0BB4               	decfsz	??_main+2,f
+   942  07DC  2FD7               	goto	u967
+   943  07DD  0000               	nop
+   944  07DE  2FE1               	goto	l160
+   945  07DF                     l154:
+   946  07DF  0000               	nop
+   947  07E0  2F58               	goto	l1174
+   948  07E1                     l160:
+   949  07E1  120A  118A  2800   	ljmp	start
+   950  07E4                     __end_of_main:
+   951                           
+   952                           	psect	text1
+   953  04BD                     __ptext1:	
+   954 ;; *************** function _lcd_start *****************
+   955 ;; Defined at:
+   956 ;;		line 189 in file "security lock.c"
+   957 ;; Parameters:    Size  Location     Type
+   958 ;;		None
+   959 ;; Auto vars:     Size  Location     Type
+   960 ;;  i               2    0        int 
+   961 ;; Return value:  Size  Location     Type
+   962 ;;                  1    wreg      void 
+   963 ;; Registers used:
+   964 ;;		wreg, status,2, status,0, pclath, cstack
+   965 ;; Tracked objects:
+   966 ;;		On entry : 0/0
+   967 ;;		On exit  : 0/0
+   968 ;;		Unchanged: 0/0
+   969 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   970 ;;      Params:         0       0       0       0       0
+   971 ;;      Locals:         2       0       0       0       0
+   972 ;;      Temps:          2       0       0       0       0
+   973 ;;      Totals:         4       0       0       0       0
+   974 ;;Total ram usage:        4 bytes
+   975 ;; Hardware stack levels used:    1
+   976 ;; Hardware stack levels required when called:    2
+   977 ;; This function calls:
+   978 ;;		_lcd_cmd
+   979 ;;		_lcd_setbit
+   980 ;; This function is called by:
+   981 ;;		_main
+   982 ;; This function uses a non-reentrant model
+   983 ;;
+   984                           
+   985                           
+   986                           ;psect for function _lcd_start
+   987  04BD                     _lcd_start:
+   988  04BD                     l1078:	
+   989                           ;incstack = 0
+   990                           ; Regs used in _lcd_start: [wreg+status,2+status,0+pclath+cstack]
+   991                           
+   992                           
+   993                           ;security lock.c: 191: }
+   994  04BD  3000               	movlw	0
+   995  04BE  120A  118A  2424  120A  118A  	fcall	_lcd_setbit
+   996  04C3                     l1080:
+   997  04C3                     l1082:
+   998  04C3                     l1090:
+   999                           
+  1000                           ;security lock.c: 195:  unsigned int a;
+  1001  04C3  3003               	movlw	3
+  1002  04C4  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
+  1003  04C9                     l1092:
+  1004                           
+  1005                           ;security lock.c: 196:  TRISD = 0x00;
+  1006  04C9  3021               	movlw	33
+  1007  04CA  00F5               	movwf	??_lcd_start+1
+  1008  04CB  3076               	movlw	118
+  1009  04CC  00F4               	movwf	??_lcd_start
+  1010  04CD                     u977:
+  1011  04CD  0BF4               	decfsz	??_lcd_start,f
+  1012  04CE  2CCD               	goto	u977
+  1013  04CF  0BF5               	decfsz	??_lcd_start+1,f
+  1014  04D0  2CCD               	goto	u977
+  1015  04D1  0000               	nop
+  1016  04D2                     l1094:
+  1017                           
+  1018                           ;security lock.c: 197:  TRISB = 0x00;
+  1019  04D2  3003               	movlw	3
+  1020  04D3  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
+  1021                           
+  1022                           ;security lock.c: 198:  TRISC = 0X0F;
+  1023  04D8  3048               	movlw	72
+  1024  04D9  00F5               	movwf	??_lcd_start+1
+  1025  04DA  306C               	movlw	108
+  1026  04DB  00F4               	movwf	??_lcd_start
+  1027  04DC                     u987:
+  1028  04DC  0BF4               	decfsz	??_lcd_start,f
+  1029  04DD  2CDC               	goto	u987
+  1030  04DE  0BF5               	decfsz	??_lcd_start+1,f
+  1031  04DF  2CDC               	goto	u987
+  1032  04E0  0000               	nop
+  1033  04E1                     l1096:
+  1034                           
+  1035                           ;security lock.c: 199:  PORTB = 0x00;
+  1036  04E1  3003               	movlw	3
+  1037  04E2  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
+  1038  04E7                     l1098:
+  1039                           
+  1040                           ;security lock.c: 200: 
+  1041  04E7  3002               	movlw	2
+  1042  04E8  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
+  1043  04ED                     l1100:
+  1044                           
+  1045                           ;security lock.c: 201:  lcd_start();
+  1046  04ED  3002               	movlw	2
+  1047  04EE  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
+  1048  04F3                     l1102:
+  1049                           
+  1050                           ;security lock.c: 202:  lcd_clear();
+  1051  04F3  3008               	movlw	8
+  1052  04F4  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
+  1053  04F9                     l1104:
+  1054                           
+  1055                           ;security lock.c: 203:  lcd_set_cursor(1, 1);
+  1056  04F9  3000               	movlw	0
+  1057  04FA  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
+  1058  04FF                     l1106:
+  1059                           
+  1060                           ;security lock.c: 204:  lcd_print_string("Input Password");
+  1061  04FF  300C               	movlw	12
+  1062  0500  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
+  1063  0505                     l1108:
+  1064                           
+  1065                           ;security lock.c: 205: 
+  1066  0505  3000               	movlw	0
+  1067  0506  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
+  1068  050B                     l1110:
+  1069                           
+  1070                           ;security lock.c: 206:  int j = 0;
+  1071  050B  3006               	movlw	6
+  1072  050C  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
+  1073  0511                     l124:
+  1074  0511  0008               	return
+  1075  0512                     __end_of_lcd_start:
+  1076                           
+  1077                           	psect	text2
+  1078  046B                     __ptext2:	
+  1079 ;; *************** function _lcd_set_cursor *****************
+  1080 ;; Defined at:
+  1081 ;;		line 171 in file "security lock.c"
+  1082 ;; Parameters:    Size  Location     Type
+  1083 ;;  a               1    wreg     unsigned char 
+  1084 ;;  b               1    4[COMMON] unsigned char 
+  1085 ;; Auto vars:     Size  Location     Type
+  1086 ;;  a               1    6[COMMON] unsigned char 
+  1087 ;;  temp            1    9[COMMON] unsigned char 
+  1088 ;;  y               1    8[COMMON] unsigned char 
+  1089 ;;  z               1    7[COMMON] unsigned char 
+  1090 ;; Return value:  Size  Location     Type
+  1091 ;;                  1    wreg      void 
+  1092 ;; Registers used:
+  1093 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+  1094 ;; Tracked objects:
+  1095 ;;		On entry : 0/0
+  1096 ;;		On exit  : 0/0
+  1097 ;;		Unchanged: 0/0
+  1098 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1099 ;;      Params:         1       0       0       0       0
+  1100 ;;      Locals:         4       0       0       0       0
+  1101 ;;      Temps:          1       0       0       0       0
+  1102 ;;      Totals:         6       0       0       0       0
+  1103 ;;Total ram usage:        6 bytes
+  1104 ;; Hardware stack levels used:    1
+  1105 ;; Hardware stack levels required when called:    2
+  1106 ;; This function calls:
+  1107 ;;		_lcd_cmd
+  1108 ;; This function is called by:
+  1109 ;;		_main
+  1110 ;; This function uses a non-reentrant model
+  1111 ;;
+  1112                           
+  1113                           
+  1114                           ;psect for function _lcd_set_cursor
+  1115  046B                     _lcd_set_cursor:
+  1116                           
+  1117                           ;incstack = 0
+  1118                           ; Regs used in _lcd_set_cursor: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+  1119                           ;lcd_set_cursor@a stored from wreg
+  1120  046B  00F6               	movwf	lcd_set_cursor@a
+  1121  046C                     l1058:
+  1122                           
+  1123                           ;security lock.c: 171: {;security lock.c: 172:  char lower_nibble, upper_nibble;;securit
+      +                          y lock.c: 173:  lower_nibble = data & 0x0F;;security lock.c: 174:  upper_nibble = data &
+      +                           0xF0;
+  1124  046C  0376               	decf	lcd_set_cursor@a,w
+  1125  046D  1D03               	btfss	3,2
+  1126  046E  2C70               	goto	u791
+  1127  046F  2C71               	goto	u790
+  1128  0470                     u791:
+  1129  0470  2C94               	goto	l1068
+  1130  0471                     u790:
+  1131  0471                     l1060:
+  1132                           
+  1133                           ;security lock.c: 175:  RD2 = 1;
+  1134  0471  0874               	movf	lcd_set_cursor@b,w
+  1135  0472  3E7F               	addlw	127
+  1136  0473  00FF               	movwf	btemp+1
+  1137  0474  087F               	movf	btemp+1,w
+  1138  0475  00F9               	movwf	lcd_set_cursor@temp
+  1139                           
+  1140                           ;security lock.c: 176:  lcd_setbit(upper_nibble >> 4);
+  1141  0476  0879               	movf	lcd_set_cursor@temp,w
+  1142  0477  00F5               	movwf	??_lcd_set_cursor
+  1143  0478  3004               	movlw	4
+  1144  0479                     u805:
+  1145  0479  1003               	clrc
+  1146  047A  0CF5               	rrf	??_lcd_set_cursor,f
+  1147  047B  3EFF               	addlw	-1
+  1148  047C  1D03               	skipz
+  1149  047D  2C79               	goto	u805
+  1150  047E  0875               	movf	??_lcd_set_cursor,w
+  1151  047F  00FF               	movwf	btemp+1
+  1152  0480  087F               	movf	btemp+1,w
+  1153  0481  00F7               	movwf	lcd_set_cursor@z
+  1154  0482                     l1062:
+  1155                           
+  1156                           ;security lock.c: 177:  RD3 = 1;
+  1157  0482  0879               	movf	lcd_set_cursor@temp,w
+  1158  0483  390F               	andlw	15
+  1159  0484  00FF               	movwf	btemp+1
+  1160  0485  087F               	movf	btemp+1,w
+  1161  0486  00F8               	movwf	lcd_set_cursor@y
+  1162  0487                     l1064:
+  1163                           
+  1164                           ;security lock.c: 178:  for (int i = 2130483; i <= 0; i--) __nop();
+  1165  0487  0877               	movf	lcd_set_cursor@z,w
+  1166  0488  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
+  1167  048D                     l1066:
+  1168                           
+  1169                           ;security lock.c: 179:  RD3 = 0;
+  1170  048D  0878               	movf	lcd_set_cursor@y,w
+  1171  048E  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
+  1172                           
+  1173                           ;security lock.c: 180:  lcd_setbit(lower_nibble);
+  1174  0493  2CBC               	goto	l119
+  1175  0494                     l1068:
+  1176  0494  3002               	movlw	2
+  1177  0495  0676               	xorwf	lcd_set_cursor@a,w
+  1178  0496  1D03               	btfss	3,2
+  1179  0497  2C99               	goto	u811
+  1180  0498  2C9A               	goto	u810
+  1181  0499                     u811:
+  1182  0499  2CBC               	goto	l119
+  1183  049A                     u810:
+  1184  049A                     l1070:
+  1185                           
+  1186                           ;security lock.c: 181:  RD3 = 1;
+  1187  049A  0874               	movf	lcd_set_cursor@b,w
+  1188  049B  3EBF               	addlw	191
+  1189  049C  00FF               	movwf	btemp+1
+  1190  049D  087F               	movf	btemp+1,w
+  1191  049E  00F9               	movwf	lcd_set_cursor@temp
+  1192                           
+  1193                           ;security lock.c: 182:  for (int i = 2130483; i <= 0; i--) __nop();
+  1194  049F  0879               	movf	lcd_set_cursor@temp,w
+  1195  04A0  00F5               	movwf	??_lcd_set_cursor
+  1196  04A1  3004               	movlw	4
+  1197  04A2                     u825:
+  1198  04A2  1003               	clrc
+  1199  04A3  0CF5               	rrf	??_lcd_set_cursor,f
+  1200  04A4  3EFF               	addlw	-1
+  1201  04A5  1D03               	skipz
+  1202  04A6  2CA2               	goto	u825
+  1203  04A7  0875               	movf	??_lcd_set_cursor,w
+  1204  04A8  00FF               	movwf	btemp+1
+  1205  04A9  087F               	movf	btemp+1,w
+  1206  04AA  00F7               	movwf	lcd_set_cursor@z
+  1207  04AB                     l1072:
+  1208                           
+  1209                           ;security lock.c: 183:  RD3 = 0;
+  1210  04AB  0879               	movf	lcd_set_cursor@temp,w
+  1211  04AC  390F               	andlw	15
+  1212  04AD  00FF               	movwf	btemp+1
+  1213  04AE  087F               	movf	btemp+1,w
+  1214  04AF  00F8               	movwf	lcd_set_cursor@y
+  1215  04B0                     l1074:
+  1216                           
+  1217                           ;security lock.c: 184: }
+  1218  04B0  0877               	movf	lcd_set_cursor@z,w
+  1219  04B1  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
+  1220  04B6                     l1076:
+  1221                           
+  1222                           ;security lock.c: 185: 
+  1223  04B6  0878               	movf	lcd_set_cursor@y,w
+  1224  04B7  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
+  1225  04BC                     l119:
+  1226  04BC  0008               	return
+  1227  04BD                     __end_of_lcd_set_cursor:
+  1228                           
+  1229                           	psect	text3
+  1230  0446                     __ptext3:	
+  1231 ;; *************** function _lcd_print_string *****************
+  1232 ;; Defined at:
+  1233 ;;		line 225 in file "security lock.c"
+  1234 ;; Parameters:    Size  Location     Type
+  1235 ;;  a               1    wreg     PTR unsigned char 
+  1236 ;;		 -> STR_5(10), STR_4(8), STR_3(2), STR_2(2), 
+  1237 ;;		 -> STR_1(15), 
+  1238 ;; Auto vars:     Size  Location     Type
+  1239 ;;  a               1   11[COMMON] PTR unsigned char 
+  1240 ;;		 -> STR_5(10), STR_4(8), STR_3(2), STR_2(2), 
+  1241 ;;		 -> STR_1(15), 
+  1242 ;;  i               2    9[COMMON] int 
+  1243 ;; Return value:  Size  Location     Type
+  1244 ;;                  1    wreg      void 
+  1245 ;; Registers used:
+  1246 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+  1247 ;; Tracked objects:
+  1248 ;;		On entry : 0/0
+  1249 ;;		On exit  : 0/0
+  1250 ;;		Unchanged: 0/0
+  1251 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1252 ;;      Params:         0       0       0       0       0
+  1253 ;;      Locals:         3       0       0       0       0
+  1254 ;;      Temps:          0       0       0       0       0
+  1255 ;;      Totals:         3       0       0       0       0
+  1256 ;;Total ram usage:        3 bytes
+  1257 ;; Hardware stack levels used:    1
+  1258 ;; Hardware stack levels required when called:    2
+  1259 ;; This function calls:
+  1260 ;;		_lcd_print_char
+  1261 ;; This function is called by:
+  1262 ;;		_main
+  1263 ;; This function uses a non-reentrant model
+  1264 ;;
+  1265                           
+  1266                           
+  1267                           ;psect for function _lcd_print_string
+  1268  0446                     _lcd_print_string:
+  1269                           
+  1270                           ;incstack = 0
+  1271                           ; Regs used in _lcd_print_string: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+  1272                           ;lcd_print_string@a stored from wreg
+  1273  0446  00FB               	movwf	lcd_print_string@a
+  1274  0447                     l1112:
+  1275                           
+  1276                           ;security lock.c: 225:     } else {;security lock.c: 226:      __nop();;security lock.c:
+      +                           227:      y--;;security lock.c: 228:     }
+  1277  0447  01F9               	clrf	lcd_print_string@i
+  1278  0448  01FA               	clrf	lcd_print_string@i+1
+  1279  0449  2C5D               	goto	l1118
+  1280  044A                     l1114:
+  1281                           
+  1282                           ;security lock.c: 229:    }
+  1283  044A  0879               	movf	lcd_print_string@i,w
+  1284  044B  077B               	addwf	lcd_print_string@a,w
+  1285  044C  0084               	movwf	4
+  1286  044D  120A  118A  2003  120A  118A  	fcall	stringdir
+  1287  0452  120A  118A  2512  120A  118A  	fcall	_lcd_print_char
+  1288  0457                     l1116:
+  1289  0457  3001               	movlw	1
+  1290  0458  07F9               	addwf	lcd_print_string@i,f
+  1291  0459  1803               	skipnc
+  1292  045A  0AFA               	incf	lcd_print_string@i+1,f
+  1293  045B  3000               	movlw	0
+  1294  045C  07FA               	addwf	lcd_print_string@i+1,f
+  1295  045D                     l1118:
+  1296  045D  0879               	movf	lcd_print_string@i,w
+  1297  045E  077B               	addwf	lcd_print_string@a,w
+  1298  045F  0084               	movwf	4
+  1299  0460  120A  118A  2003  120A  118A  	fcall	stringdir
+  1300  0465  3A00               	xorlw	0
+  1301  0466  1D03               	skipz
+  1302  0467  2C69               	goto	u831
+  1303  0468  2C6A               	goto	u830
+  1304  0469                     u831:
+  1305  0469  2C4A               	goto	l1114
+  1306  046A                     u830:
+  1307  046A                     l137:
+  1308  046A  0008               	return
+  1309  046B                     __end_of_lcd_print_string:
+  1310                           
+  1311                           	psect	text4
+  1312  0512                     __ptext4:	
+  1313 ;; *************** function _lcd_print_char *****************
+  1314 ;; Defined at:
+  1315 ;;		line 209 in file "security lock.c"
+  1316 ;; Parameters:    Size  Location     Type
+  1317 ;;  data            1    wreg     unsigned char 
+  1318 ;; Auto vars:     Size  Location     Type
+  1319 ;;  data            1    4[COMMON] unsigned char 
+  1320 ;;  i               2    7[COMMON] int 
+  1321 ;;  i               2    5[COMMON] int 
+  1322 ;;  upper_nibble    1    3[COMMON] unsigned char 
+  1323 ;;  lower_nibble    1    2[COMMON] unsigned char 
+  1324 ;; Return value:  Size  Location     Type
+  1325 ;;                  1    wreg      void 
+  1326 ;; Registers used:
+  1327 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+  1328 ;; Tracked objects:
+  1329 ;;		On entry : 0/0
+  1330 ;;		On exit  : 0/0
+  1331 ;;		Unchanged: 0/0
+  1332 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1333 ;;      Params:         0       0       0       0       0
+  1334 ;;      Locals:         7       0       0       0       0
+  1335 ;;      Temps:          1       0       0       0       0
+  1336 ;;      Totals:         8       0       0       0       0
+  1337 ;;Total ram usage:        8 bytes
+  1338 ;; Hardware stack levels used:    1
+  1339 ;; Hardware stack levels required when called:    1
+  1340 ;; This function calls:
+  1341 ;;		_lcd_setbit
+  1342 ;; This function is called by:
+  1343 ;;		_lcd_print_string
+  1344 ;; This function uses a non-reentrant model
+  1345 ;;
+  1346                           
+  1347                           
+  1348                           ;psect for function _lcd_print_char
+  1349  0512                     _lcd_print_char:
+  1350                           
+  1351                           ;incstack = 0
+  1352                           ; Regs used in _lcd_print_char: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+  1353                           ;lcd_print_char@data stored from wreg
+  1354  0512  00F4               	movwf	lcd_print_char@data
+  1355  0513                     l1000:
+  1356                           
+  1357                           ;security lock.c: 209:   if (j < 4) {;security lock.c: 210:    int y;;security lock.c: 2
+      +                          11:    for (y = 1; y <= 4; y++) {;security lock.c: 212:     get_colm(j);
+  1358  0513  0874               	movf	lcd_print_char@data,w
+  1359  0514  390F               	andlw	15
+  1360  0515  00FF               	movwf	btemp+1
+  1361  0516  087F               	movf	btemp+1,w
+  1362  0517  00F2               	movwf	lcd_print_char@lower_nibble
+  1363                           
+  1364                           ;security lock.c: 213:     if (input[j] >= 0 && input[j] <= 9) {
+  1365  0518  0874               	movf	lcd_print_char@data,w
+  1366  0519  39F0               	andlw	240
+  1367  051A  00FF               	movwf	btemp+1
+  1368  051B  087F               	movf	btemp+1,w
+  1369  051C  00F3               	movwf	lcd_print_char@upper_nibble
+  1370  051D                     l1002:
+  1371                           
+  1372                           ;security lock.c: 214:      lcd_set_cursor(2, y);
+  1373  051D  1283               	bcf	3,5	;RP0=0, select bank0
+  1374  051E  1303               	bcf	3,6	;RP1=0, select bank0
+  1375  051F  1508               	bsf	8,2	;volatile
+  1376  0520                     l1004:
+  1377                           
+  1378                           ;security lock.c: 215:      lcd_print_string("*");
+  1379  0520  0873               	movf	lcd_print_char@upper_nibble,w
+  1380  0521  00F1               	movwf	??_lcd_print_char
+  1381  0522  3004               	movlw	4
+  1382  0523                     u525:
+  1383  0523  1003               	clrc
+  1384  0524  0CF1               	rrf	??_lcd_print_char,f
+  1385  0525  3EFF               	addlw	-1
+  1386  0526  1D03               	skipz
+  1387  0527  2D23               	goto	u525
+  1388  0528  0871               	movf	??_lcd_print_char,w
+  1389  0529  120A  118A  2424  120A  118A  	fcall	_lcd_setbit
+  1390  052E                     l1006:
+  1391                           
+  1392                           ;security lock.c: 216:      j++;
+  1393  052E  1283               	bcf	3,5	;RP0=0, select bank0
+  1394  052F  1303               	bcf	3,6	;RP1=0, select bank0
+  1395  0530  1588               	bsf	8,3	;volatile
+  1396  0531                     l1008:
+  1397                           
+  1398                           ;security lock.c: 217:     } else if (j >= 1 && input[j] == 11) {
+  1399  0531  3033               	movlw	51
+  1400  0532  00F5               	movwf	lcd_print_char@i
+  1401  0533  3082               	movlw	130
+  1402  0534  00F6               	movwf	lcd_print_char@i+1
+  1403  0535                     l127:
+  1404  0535  0000               	nop
+  1405  0536                     l1014:
+  1406  0536  30FF               	movlw	255
+  1407  0537  07F5               	addwf	lcd_print_char@i,f
+  1408  0538  1803               	skipnc
+  1409  0539  0AF6               	incf	lcd_print_char@i+1,f
+  1410  053A  30FF               	movlw	255
+  1411  053B  07F6               	addwf	lcd_print_char@i+1,f
+  1412  053C                     l1016:
+  1413  053C  0876               	movf	lcd_print_char@i+1,w
+  1414  053D  3A80               	xorlw	128
+  1415  053E  00FF               	movwf	btemp+1
+  1416  053F  3080               	movlw	128
+  1417  0540  027F               	subwf	btemp+1,w
+  1418  0541  1D03               	skipz
+  1419  0542  2D45               	goto	u535
+  1420  0543  3001               	movlw	1
+  1421  0544  0275               	subwf	lcd_print_char@i,w
+  1422  0545                     u535:
+  1423  0545  1C03               	skipc
+  1424  0546  2D48               	goto	u531
+  1425  0547  2D49               	goto	u530
+  1426  0548                     u531:
+  1427  0548  2D35               	goto	l127
+  1428  0549                     u530:
+  1429  0549                     l128:
+  1430                           
+  1431                           ;security lock.c: 218:      y--;
+  1432  0549  1283               	bcf	3,5	;RP0=0, select bank0
+  1433  054A  1303               	bcf	3,6	;RP1=0, select bank0
+  1434  054B  1188               	bcf	8,3	;volatile
+  1435  054C                     l1018:
+  1436                           
+  1437                           ;security lock.c: 219: 
+  1438  054C  0872               	movf	lcd_print_char@lower_nibble,w
+  1439  054D  120A  118A  2424  120A  118A  	fcall	_lcd_setbit
+  1440  0552                     l1020:
+  1441                           
+  1442                           ;security lock.c: 220:      lcd_set_cursor(2, y);
+  1443  0552  1283               	bcf	3,5	;RP0=0, select bank0
+  1444  0553  1303               	bcf	3,6	;RP1=0, select bank0
+  1445  0554  1588               	bsf	8,3	;volatile
+  1446  0555                     l1022:
+  1447                           
+  1448                           ;security lock.c: 221:      lcd_print_string(" ");
+  1449  0555  3033               	movlw	51
+  1450  0556  00F7               	movwf	lcd_print_char@i_73
+  1451  0557  3082               	movlw	130
+  1452  0558  00F8               	movwf	lcd_print_char@i_73+1
+  1453  0559                     l129:
+  1454  0559  0000               	nop
+  1455  055A                     l1028:
+  1456  055A  30FF               	movlw	255
+  1457  055B  07F7               	addwf	lcd_print_char@i_73,f
+  1458  055C  1803               	skipnc
+  1459  055D  0AF8               	incf	lcd_print_char@i_73+1,f
+  1460  055E  30FF               	movlw	255
+  1461  055F  07F8               	addwf	lcd_print_char@i_73+1,f
+  1462  0560                     l1030:
+  1463  0560  0878               	movf	lcd_print_char@i_73+1,w
+  1464  0561  3A80               	xorlw	128
+  1465  0562  00FF               	movwf	btemp+1
+  1466  0563  3080               	movlw	128
+  1467  0564  027F               	subwf	btemp+1,w
+  1468  0565  1D03               	skipz
+  1469  0566  2D69               	goto	u545
+  1470  0567  3001               	movlw	1
+  1471  0568  0277               	subwf	lcd_print_char@i_73,w
+  1472  0569                     u545:
+  1473  0569  1C03               	skipc
+  1474  056A  2D6C               	goto	u541
+  1475  056B  2D6D               	goto	u540
+  1476  056C                     u541:
+  1477  056C  2D59               	goto	l129
+  1478  056D                     u540:
+  1479  056D                     l130:
+  1480                           
+  1481                           ;security lock.c: 222: 
+  1482  056D  1283               	bcf	3,5	;RP0=0, select bank0
+  1483  056E  1303               	bcf	3,6	;RP1=0, select bank0
+  1484  056F  1188               	bcf	8,3	;volatile
+  1485  0570                     l131:
+  1486  0570  0008               	return
+  1487  0571                     __end_of_lcd_print_char:
+  1488                           
+  1489                           	psect	text5
+  1490  03EA                     __ptext5:	
+  1491 ;; *************** function _lcd_clear *****************
+  1492 ;; Defined at:
+  1493 ;;		line 165 in file "security lock.c"
+  1494 ;; Parameters:    Size  Location     Type
   1495 ;;		None
-  1496 ;; Return value:  Size  Location     Type
-  1497 ;;                  1    wreg      void 
-  1498 ;; Registers used:
-  1499 ;;		wreg, status,2, status,0, pclath, cstack
-  1500 ;; Tracked objects:
-  1501 ;;		On entry : 0/0
-  1502 ;;		On exit  : 0/0
-  1503 ;;		Unchanged: 0/0
-  1504 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-  1505 ;;      Params:         0       0       0       0       0
-  1506 ;;      Locals:         0       0       0       0       0
-  1507 ;;      Temps:          0       0       0       0       0
-  1508 ;;      Totals:         0       0       0       0       0
-  1509 ;;Total ram usage:        0 bytes
-  1510 ;; Hardware stack levels used:    1
-  1511 ;; Hardware stack levels required when called:    2
-  1512 ;; This function calls:
-  1513 ;;		_lcd_cmd
-  1514 ;; This function is called by:
-  1515 ;;		_main
-  1516 ;; This function uses a non-reentrant model
-  1517 ;;
-  1518                           
-  1519                           
-  1520                           ;psect for function _lcd_clear
-  1521  03EA                     _lcd_clear:
-  1522  03EA                     l1056:	
-  1523                           ;incstack = 0
-  1524                           ; Regs used in _lcd_clear: [wreg+status,2+status,0+pclath+cstack]
-  1525                           
-  1526                           
-  1527                           ;security lock.c: 166: }
-  1528  03EA  3000               	movlw	0
-  1529  03EB  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
-  1530                           
-  1531                           ;security lock.c: 167: 
-  1532  03F0  3001               	movlw	1
-  1533  03F1  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
-  1534  03F6                     l113:
-  1535  03F6  0008               	return
-  1536  03F7                     __end_of_lcd_clear:
-  1537                           
-  1538                           	psect	text6
-  1539  040A                     __ptext6:	
-  1540 ;; *************** function _lcd_cmd *****************
-  1541 ;; Defined at:
-  1542 ;;		line 155 in file "security lock.c"
-  1543 ;; Parameters:    Size  Location     Type
-  1544 ;;  a               1    wreg     unsigned char 
-  1545 ;; Auto vars:     Size  Location     Type
-  1546 ;;  a               1    3[COMMON] unsigned char 
-  1547 ;; Return value:  Size  Location     Type
-  1548 ;;                  1    wreg      void 
-  1549 ;; Registers used:
-  1550 ;;		wreg, status,2, status,0, pclath, cstack
-  1551 ;; Tracked objects:
-  1552 ;;		On entry : 0/0
-  1553 ;;		On exit  : 0/0
-  1554 ;;		Unchanged: 0/0
-  1555 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-  1556 ;;      Params:         0       0       0       0       0
-  1557 ;;      Locals:         1       0       0       0       0
-  1558 ;;      Temps:          2       0       0       0       0
-  1559 ;;      Totals:         3       0       0       0       0
-  1560 ;;Total ram usage:        3 bytes
-  1561 ;; Hardware stack levels used:    1
-  1562 ;; Hardware stack levels required when called:    1
-  1563 ;; This function calls:
-  1564 ;;		_lcd_setbit
-  1565 ;; This function is called by:
-  1566 ;;		_lcd_clear
-  1567 ;;		_lcd_set_cursor
-  1568 ;;		_lcd_start
-  1569 ;; This function uses a non-reentrant model
-  1570 ;;
-  1571                           
-  1572                           
-  1573                           ;psect for function _lcd_cmd
-  1574  040A                     _lcd_cmd:
-  1575                           
-  1576                           ;incstack = 0
-  1577                           ; Regs used in _lcd_cmd: [wreg+status,2+status,0+pclath+cstack]
-  1578                           ;lcd_cmd@a stored from wreg
-  1579  040A  00F3               	movwf	lcd_cmd@a
-  1580  040B                     l990:
-  1581                           
-  1582                           ;security lock.c: 155:  _delay((unsigned long)((5)*(20000000/4000.0)));;security lock.c:
-      +                           156:  lcd_cmd(0x03);;security lock.c: 157:  _delay((unsigned long)((11)*(20000000/4000.
-      +                          0)));
-  1583  040B  1283               	bcf	3,5	;RP0=0, select bank0
-  1584  040C  1303               	bcf	3,6	;RP1=0, select bank0
-  1585  040D  1108               	bcf	8,2	;volatile
-  1586  040E                     l992:
-  1587                           
-  1588                           ;security lock.c: 158:  lcd_cmd(0x03);
-  1589  040E  0873               	movf	lcd_cmd@a,w
-  1590  040F  120A  118A  2424  120A  118A  	fcall	_lcd_setbit
-  1591  0414                     l994:
-  1592                           
-  1593                           ;security lock.c: 159:  lcd_cmd(0x02);
-  1594  0414  1283               	bcf	3,5	;RP0=0, select bank0
-  1595  0415  1303               	bcf	3,6	;RP1=0, select bank0
-  1596  0416  1588               	bsf	8,3	;volatile
-  1597  0417                     l996:
-  1598                           
-  1599                           ;security lock.c: 160:  lcd_cmd(0x02);
-  1600  0417  301A               	movlw	26
-  1601  0418  00F2               	movwf	??_lcd_cmd+1
-  1602  0419  30F8               	movlw	248
-  1603  041A  00F1               	movwf	??_lcd_cmd
-  1604  041B                     u997:
-  1605  041B  0BF1               	decfsz	??_lcd_cmd,f
-  1606  041C  2C1B               	goto	u997
-  1607  041D  0BF2               	decfsz	??_lcd_cmd+1,f
-  1608  041E  2C1B               	goto	u997
-  1609  041F  0000               	nop
-  1610  0420                     l998:
-  1611                           
-  1612                           ;security lock.c: 161:  lcd_cmd(0x08);
-  1613  0420  1283               	bcf	3,5	;RP0=0, select bank0
-  1614  0421  1303               	bcf	3,6	;RP1=0, select bank0
-  1615  0422  1188               	bcf	8,3	;volatile
-  1616  0423                     l110:
-  1617  0423  0008               	return
-  1618  0424                     __end_of_lcd_cmd:
-  1619                           
-  1620                           	psect	text7
-  1621  0424                     __ptext7:	
-  1622 ;; *************** function _lcd_setbit *****************
-  1623 ;; Defined at:
-  1624 ;;		line 135 in file "security lock.c"
-  1625 ;; Parameters:    Size  Location     Type
-  1626 ;;  data_bit        1    wreg     unsigned char 
-  1627 ;; Auto vars:     Size  Location     Type
-  1628 ;;  data_bit        1    0[COMMON] unsigned char 
-  1629 ;; Return value:  Size  Location     Type
-  1630 ;;                  1    wreg      void 
-  1631 ;; Registers used:
-  1632 ;;		wreg
-  1633 ;; Tracked objects:
-  1634 ;;		On entry : 0/0
-  1635 ;;		On exit  : 0/0
-  1636 ;;		Unchanged: 0/0
-  1637 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-  1638 ;;      Params:         0       0       0       0       0
-  1639 ;;      Locals:         1       0       0       0       0
-  1640 ;;      Temps:          0       0       0       0       0
-  1641 ;;      Totals:         1       0       0       0       0
-  1642 ;;Total ram usage:        1 bytes
-  1643 ;; Hardware stack levels used:    1
-  1644 ;; This function calls:
-  1645 ;;		Nothing
-  1646 ;; This function is called by:
-  1647 ;;		_lcd_cmd
-  1648 ;;		_lcd_start
-  1649 ;;		_lcd_print_char
-  1650 ;; This function uses a non-reentrant model
-  1651 ;;
-  1652                           
-  1653                           
-  1654                           ;psect for function _lcd_setbit
-  1655  0424                     _lcd_setbit:
-  1656                           
-  1657                           ;incstack = 0
-  1658                           ; Regs used in _lcd_setbit: [wreg]
-  1659                           ;lcd_setbit@data_bit stored from wreg
-  1660  0424  00F0               	movwf	lcd_setbit@data_bit
-  1661  0425                     l980:
-  1662                           
-  1663                           ;security lock.c: 135:   z = temp >> 4;;security lock.c: 136:   y = temp & 0x0F;;securit
-      +                          y lock.c: 137:   lcd_cmd(z);
-  1664  0425  1C70               	btfss	lcd_setbit@data_bit,0
-  1665  0426  2C28               	goto	u481
-  1666  0427  2C29               	goto	u480
-  1667  0428                     u481:
-  1668  0428  2C2D               	goto	l99
-  1669  0429                     u480:
-  1670  0429                     l982:
-  1671                           
-  1672                           ;security lock.c: 138:   lcd_cmd(y);
-  1673  0429  1283               	bcf	3,5	;RP0=0, select bank0
-  1674  042A  1303               	bcf	3,6	;RP1=0, select bank0
-  1675  042B  1608               	bsf	8,4	;volatile
-  1676  042C  2C30               	goto	l100
-  1677  042D                     l99:	
-  1678                           ;security lock.c: 139:  } else if (a == 2) {
-  1679                           
-  1680                           
-  1681                           ;security lock.c: 140:   temp = 0xC0 + b - 1;
-  1682  042D  1283               	bcf	3,5	;RP0=0, select bank0
-  1683  042E  1303               	bcf	3,6	;RP1=0, select bank0
-  1684  042F  1208               	bcf	8,4	;volatile
-  1685  0430                     l100:
-  1686                           
-  1687                           ;security lock.c: 141:   z = temp >> 4;
-  1688  0430  1CF0               	btfss	lcd_setbit@data_bit,1
-  1689  0431  2C33               	goto	u491
-  1690  0432  2C34               	goto	u490
-  1691  0433                     u491:
-  1692  0433  2C36               	goto	l101
-  1693  0434                     u490:
-  1694  0434                     l984:
-  1695                           
-  1696                           ;security lock.c: 142:   y = temp & 0x0F;
-  1697  0434  1688               	bsf	8,5	;volatile
-  1698  0435  2C37               	goto	l102
-  1699  0436                     l101:	
-  1700                           ;security lock.c: 143:   lcd_cmd(z);
-  1701                           
-  1702                           
-  1703                           ;security lock.c: 144:   lcd_cmd(y);
-  1704  0436  1288               	bcf	8,5	;volatile
-  1705  0437                     l102:
-  1706                           
-  1707                           ;security lock.c: 145:  }
-  1708  0437  1D70               	btfss	lcd_setbit@data_bit,2
-  1709  0438  2C3A               	goto	u501
-  1710  0439  2C3B               	goto	u500
-  1711  043A                     u501:
-  1712  043A  2C3D               	goto	l103
-  1713  043B                     u500:
-  1714  043B                     l986:
-  1715                           
-  1716                           ;security lock.c: 146: }
-  1717  043B  1708               	bsf	8,6	;volatile
-  1718  043C  2C3E               	goto	l104
-  1719  043D                     l103:	
-  1720                           ;security lock.c: 147: 
-  1721                           
-  1722                           
-  1723                           ;security lock.c: 148: void lcd_start()
-  1724  043D  1308               	bcf	8,6	;volatile
-  1725  043E                     l104:
-  1726                           
-  1727                           ;security lock.c: 149: {
-  1728  043E  1DF0               	btfss	lcd_setbit@data_bit,3
-  1729  043F  2C41               	goto	u511
-  1730  0440  2C42               	goto	u510
-  1731  0441                     u511:
-  1732  0441  2C44               	goto	l105
-  1733  0442                     u510:
-  1734  0442                     l988:
-  1735                           
-  1736                           ;security lock.c: 150:  lcd_setbit(0x00);
-  1737  0442  1788               	bsf	8,7	;volatile
-  1738  0443  2C45               	goto	l107
-  1739  0444                     l105:	
-  1740                           ;security lock.c: 151: 
-  1741                           
-  1742                           
-  1743                           ;security lock.c: 152:  for (int i = 1065244; i <= 0; i--) __nop();
-  1744  0444  1388               	bcf	8,7	;volatile
-  1745  0445                     l107:
-  1746  0445  0008               	return
-  1747  0446                     __end_of_lcd_setbit:
-  1748                           
-  1749                           	psect	text8
-  1750  0571                     __ptext8:	
-  1751 ;; *************** function _get_colm *****************
-  1752 ;; Defined at:
-  1753 ;;		line 49 in file "security lock.c"
-  1754 ;; Parameters:    Size  Location     Type
-  1755 ;;  i               2    0[COMMON] int 
-  1756 ;; Auto vars:     Size  Location     Type
-  1757 ;;		None
-  1758 ;; Return value:  Size  Location     Type
-  1759 ;;                  1    wreg      void 
-  1760 ;; Registers used:
-  1761 ;;		wreg, fsr0l, fsr0h, status,2, status,0
-  1762 ;; Tracked objects:
-  1763 ;;		On entry : 0/0
-  1764 ;;		On exit  : 0/0
-  1765 ;;		Unchanged: 0/0
-  1766 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-  1767 ;;      Params:         2       0       0       0       0
-  1768 ;;      Locals:         0       0       0       0       0
-  1769 ;;      Temps:          1       0       0       0       0
-  1770 ;;      Totals:         3       0       0       0       0
-  1771 ;;Total ram usage:        3 bytes
-  1772 ;; Hardware stack levels used:    1
-  1773 ;; This function calls:
-  1774 ;;		Nothing
-  1775 ;; This function is called by:
-  1776 ;;		_main
-  1777 ;; This function uses a non-reentrant model
-  1778 ;;
-  1779                           
-  1780                           
-  1781                           ;psect for function _get_colm
-  1782  0571                     _get_colm:
-  1783  0571                     l45:	
-  1784                           ;incstack = 0
-  1785                           ; Regs used in _get_colm: [wreg-fsr0h+status,2+status,0]
-  1786                           ;security lock.c: 49:    };security lock.c: 50:    break;;security lock.c: 51:   }
-  1787                           
-  1788                           
-  1789                           ;security lock.c: 52:   RC6 = 1;
-  1790  0571  1283               	bcf	3,5	;RP0=0, select bank0
-  1791  0572  1303               	bcf	3,6	;RP1=0, select bank0
-  1792  0573  1607               	bsf	7,4	;volatile
-  1793                           
-  1794                           ;security lock.c: 53:   RC5 = 0;
-  1795  0574  1387               	bcf	7,7	;volatile
-  1796  0575  1307               	bcf	7,6	;volatile
-  1797  0576  1287               	bcf	7,5	;volatile
-  1798                           
-  1799                           ;security lock.c: 54:   if (RC0 == 1) {
-  1800  0577  1C07               	btfss	7,0	;volatile
-  1801  0578  2D7A               	goto	u551
-  1802  0579  2D7B               	goto	u550
-  1803  057A                     u551:
-  1804  057A  2D8B               	goto	l46
-  1805  057B                     u550:
-  1806  057B                     l1032:
-  1807                           
-  1808                           ;security lock.c: 55:    input[i] = 7;
-  1809  057B  0870               	movf	get_colm@i,w
-  1810  057C  00F2               	movwf	??_get_colm
-  1811  057D  0772               	addwf	??_get_colm,w
-  1812  057E  3E20               	addlw	(low (_input| 0))& (0+255)
-  1813  057F  0084               	movwf	4
-  1814  0580  3001               	movlw	1
-  1815  0581  1383               	bcf	3,7	;select IRP bank0
-  1816  0582  0080               	movwf	0
-  1817  0583  0A84               	incf	4,f
-  1818  0584  3000               	movlw	0
-  1819  0585  0080               	movwf	0
-  1820  0586                     l47:	
-  1821                           ;security lock.c: 57:    }
-  1822                           
-  1823                           
-  1824                           ;security lock.c: 56:    while (RC0 == 1) {
-  1825  0586  1807               	btfsc	7,0	;volatile
-  1826  0587  2D89               	goto	u561
-  1827  0588  2D8A               	goto	u560
-  1828  0589                     u561:
-  1829  0589  2D86               	goto	l47
-  1830  058A                     u560:
-  1831  058A  2E6A               	goto	l96
-  1832  058B                     l46:	
-  1833                           ;security lock.c: 59:   }
-  1834                           
-  1835                           
-  1836                           ;security lock.c: 60:   if (RC1 == 1) {
-  1837  058B  1C87               	btfss	7,1	;volatile
-  1838  058C  2D8E               	goto	u571
-  1839  058D  2D8F               	goto	u570
-  1840  058E                     u571:
-  1841  058E  2D9F               	goto	l51
-  1842  058F                     u570:
-  1843  058F                     l1034:
-  1844                           
-  1845                           ;security lock.c: 61:    input[i] = 8;
-  1846  058F  0870               	movf	get_colm@i,w
-  1847  0590  00F2               	movwf	??_get_colm
-  1848  0591  0772               	addwf	??_get_colm,w
-  1849  0592  3E20               	addlw	(low (_input| 0))& (0+255)
-  1850  0593  0084               	movwf	4
-  1851  0594  3002               	movlw	2
-  1852  0595  1383               	bcf	3,7	;select IRP bank0
-  1853  0596  0080               	movwf	0
-  1854  0597  0A84               	incf	4,f
-  1855  0598  3000               	movlw	0
-  1856  0599  0080               	movwf	0
-  1857  059A                     l52:	
-  1858                           ;security lock.c: 63:    }
-  1859                           
-  1860                           
-  1861                           ;security lock.c: 62:    while (RC1 == 1) {
-  1862  059A  1887               	btfsc	7,1	;volatile
-  1863  059B  2D9D               	goto	u581
-  1864  059C  2D9E               	goto	u580
-  1865  059D                     u581:
-  1866  059D  2D9A               	goto	l52
-  1867  059E                     u580:
-  1868  059E  2E6A               	goto	l96
-  1869  059F                     l51:	
-  1870                           ;security lock.c: 65:   }
-  1871                           
-  1872                           
-  1873                           ;security lock.c: 66:   if (RC2 == 1) {
-  1874  059F  1D07               	btfss	7,2	;volatile
-  1875  05A0  2DA2               	goto	u591
-  1876  05A1  2DA3               	goto	u590
-  1877  05A2                     u591:
-  1878  05A2  2DB3               	goto	l55
-  1879  05A3                     u590:
-  1880  05A3                     l1036:
-  1881                           
-  1882                           ;security lock.c: 67:    input[i] = 9;
-  1883  05A3  0870               	movf	get_colm@i,w
-  1884  05A4  00F2               	movwf	??_get_colm
-  1885  05A5  0772               	addwf	??_get_colm,w
-  1886  05A6  3E20               	addlw	(low (_input| 0))& (0+255)
-  1887  05A7  0084               	movwf	4
-  1888  05A8  3003               	movlw	3
-  1889  05A9  1383               	bcf	3,7	;select IRP bank0
-  1890  05AA  0080               	movwf	0
-  1891  05AB  0A84               	incf	4,f
-  1892  05AC  3000               	movlw	0
-  1893  05AD  0080               	movwf	0
-  1894  05AE                     l56:	
-  1895                           ;security lock.c: 69:    }
-  1896                           
-  1897                           
-  1898                           ;security lock.c: 68:    while (RC2 == 1) {
-  1899  05AE  1907               	btfsc	7,2	;volatile
-  1900  05AF  2DB1               	goto	u601
-  1901  05B0  2DB2               	goto	u600
-  1902  05B1                     u601:
-  1903  05B1  2DAE               	goto	l56
-  1904  05B2                     u600:
-  1905  05B2  2E6A               	goto	l96
-  1906  05B3                     l55:	
-  1907                           ;security lock.c: 71:   }
-  1908                           
-  1909                           
-  1910                           ;security lock.c: 72:   RC7 = 1;
-  1911  05B3  1687               	bsf	7,5	;volatile
-  1912                           
-  1913                           ;security lock.c: 73:   RC6 = 0;
-  1914  05B4  1207               	bcf	7,4	;volatile
-  1915                           
-  1916                           ;security lock.c: 74:   if (RC0 == 1) {
-  1917  05B5  1C07               	btfss	7,0	;volatile
-  1918  05B6  2DB8               	goto	u611
-  1919  05B7  2DB9               	goto	u610
-  1920  05B8                     u611:
-  1921  05B8  2DC9               	goto	l59
-  1922  05B9                     u610:
-  1923  05B9                     l1038:
-  1924                           
-  1925                           ;security lock.c: 75:    input[i] = 11;
-  1926  05B9  0870               	movf	get_colm@i,w
-  1927  05BA  00F2               	movwf	??_get_colm
-  1928  05BB  0772               	addwf	??_get_colm,w
-  1929  05BC  3E20               	addlw	(low (_input| 0))& (0+255)
-  1930  05BD  0084               	movwf	4
-  1931  05BE  3004               	movlw	4
-  1932  05BF  1383               	bcf	3,7	;select IRP bank0
-  1933  05C0  0080               	movwf	0
-  1934  05C1  0A84               	incf	4,f
-  1935  05C2  3000               	movlw	0
-  1936  05C3  0080               	movwf	0
-  1937  05C4                     l60:	
-  1938                           ;security lock.c: 77:    }
-  1939                           
-  1940                           
-  1941                           ;security lock.c: 76:    while (RC0 == 1) {
-  1942  05C4  1807               	btfsc	7,0	;volatile
-  1943  05C5  2DC7               	goto	u621
-  1944  05C6  2DC8               	goto	u620
-  1945  05C7                     u621:
-  1946  05C7  2DC4               	goto	l60
-  1947  05C8                     u620:
-  1948  05C8  2E6A               	goto	l96
-  1949  05C9                     l59:	
-  1950                           ;security lock.c: 79:   }
-  1951                           
-  1952                           
-  1953                           ;security lock.c: 80:   if (RC1 == 1) {
-  1954  05C9  1C87               	btfss	7,1	;volatile
-  1955  05CA  2DCC               	goto	u631
-  1956  05CB  2DCD               	goto	u630
-  1957  05CC                     u631:
-  1958  05CC  2DDD               	goto	l63
-  1959  05CD                     u630:
-  1960  05CD                     l1040:
-  1961                           
-  1962                           ;security lock.c: 81:    input[i] = 0;
-  1963  05CD  0870               	movf	get_colm@i,w
-  1964  05CE  00F2               	movwf	??_get_colm
-  1965  05CF  0772               	addwf	??_get_colm,w
-  1966  05D0  3E20               	addlw	(low (_input| 0))& (0+255)
-  1967  05D1  0084               	movwf	4
-  1968  05D2  3005               	movlw	5
-  1969  05D3  1383               	bcf	3,7	;select IRP bank0
-  1970  05D4  0080               	movwf	0
-  1971  05D5  0A84               	incf	4,f
-  1972  05D6  3000               	movlw	0
-  1973  05D7  0080               	movwf	0
-  1974  05D8                     l64:	
-  1975                           ;security lock.c: 83:    }
-  1976                           
-  1977                           
-  1978                           ;security lock.c: 82:    while (RC1 == 1) {
-  1979  05D8  1887               	btfsc	7,1	;volatile
-  1980  05D9  2DDB               	goto	u641
-  1981  05DA  2DDC               	goto	u640
-  1982  05DB                     u641:
-  1983  05DB  2DD8               	goto	l64
-  1984  05DC                     u640:
-  1985  05DC  2E6A               	goto	l96
-  1986  05DD                     l63:	
-  1987                           ;security lock.c: 85:   }
-  1988                           
-  1989                           
-  1990                           ;security lock.c: 86:   if (RC2 == 1) {
-  1991  05DD  1D07               	btfss	7,2	;volatile
-  1992  05DE  2DE0               	goto	u651
-  1993  05DF  2DE1               	goto	u650
-  1994  05E0                     u651:
-  1995  05E0  2DF1               	goto	l67
-  1996  05E1                     u650:
-  1997  05E1                     l1042:
-  1998                           
-  1999                           ;security lock.c: 87:    input[i] = 12;
-  2000  05E1  0870               	movf	get_colm@i,w
-  2001  05E2  00F2               	movwf	??_get_colm
-  2002  05E3  0772               	addwf	??_get_colm,w
-  2003  05E4  3E20               	addlw	(low (_input| 0))& (0+255)
-  2004  05E5  0084               	movwf	4
-  2005  05E6  3006               	movlw	6
-  2006  05E7  1383               	bcf	3,7	;select IRP bank0
-  2007  05E8  0080               	movwf	0
-  2008  05E9  0A84               	incf	4,f
-  2009  05EA  3000               	movlw	0
-  2010  05EB  0080               	movwf	0
-  2011  05EC                     l68:	
-  2012                           ;security lock.c: 89:    }
-  2013                           
-  2014                           
-  2015                           ;security lock.c: 88:    while (RC2 == 1) {
-  2016  05EC  1907               	btfsc	7,2	;volatile
-  2017  05ED  2DEF               	goto	u661
-  2018  05EE  2DF0               	goto	u660
-  2019  05EF                     u661:
-  2020  05EF  2DEC               	goto	l68
-  2021  05F0                     u660:
-  2022  05F0  2E6A               	goto	l96
-  2023  05F1                     l67:	
-  2024                           ;security lock.c: 91:   }
-  2025                           
-  2026                           
-  2027                           ;security lock.c: 92:  }
-  2028  05F1  1707               	bsf	7,6	;volatile
-  2029                           
-  2030                           ;security lock.c: 93: }
-  2031  05F2  1287               	bcf	7,5	;volatile
-  2032                           
-  2033                           ;security lock.c: 94: 
-  2034  05F3  1C07               	btfss	7,0	;volatile
-  2035  05F4  2DF6               	goto	u671
-  2036  05F5  2DF7               	goto	u670
-  2037  05F6                     u671:
-  2038  05F6  2E07               	goto	l71
-  2039  05F7                     u670:
-  2040  05F7                     l1044:
-  2041                           
-  2042                           ;security lock.c: 95: void lcd_setbit(char data_bit)
-  2043  05F7  0870               	movf	get_colm@i,w
-  2044  05F8  00F2               	movwf	??_get_colm
-  2045  05F9  0772               	addwf	??_get_colm,w
-  2046  05FA  3E20               	addlw	(low (_input| 0))& (0+255)
-  2047  05FB  0084               	movwf	4
-  2048  05FC  3007               	movlw	7
-  2049  05FD  1383               	bcf	3,7	;select IRP bank0
-  2050  05FE  0080               	movwf	0
-  2051  05FF  0A84               	incf	4,f
-  2052  0600  3000               	movlw	0
-  2053  0601  0080               	movwf	0
-  2054  0602                     l72:	
-  2055                           ;security lock.c: 97:  if (data_bit & 1)
-  2056                           
-  2057                           
-  2058                           ;security lock.c: 96: {
-  2059  0602  1807               	btfsc	7,0	;volatile
-  2060  0603  2E05               	goto	u681
-  2061  0604  2E06               	goto	u680
-  2062  0605                     u681:
-  2063  0605  2E02               	goto	l72
-  2064  0606                     u680:
-  2065  0606  2E6A               	goto	l96
-  2066  0607                     l71:	
-  2067                           ;security lock.c: 99:  else
-  2068                           
-  2069                           
-  2070                           ;security lock.c: 100:   RD4 = 0;
-  2071  0607  1C87               	btfss	7,1	;volatile
-  2072  0608  2E0A               	goto	u691
-  2073  0609  2E0B               	goto	u690
-  2074  060A                     u691:
-  2075  060A  2E1B               	goto	l75
-  2076  060B                     u690:
-  2077  060B                     l1046:
-  2078                           
-  2079                           ;security lock.c: 101:  if (data_bit & 2)
-  2080  060B  0870               	movf	get_colm@i,w
-  2081  060C  00F2               	movwf	??_get_colm
-  2082  060D  0772               	addwf	??_get_colm,w
-  2083  060E  3E20               	addlw	(low (_input| 0))& (0+255)
-  2084  060F  0084               	movwf	4
-  2085  0610  3008               	movlw	8
-  2086  0611  1383               	bcf	3,7	;select IRP bank0
-  2087  0612  0080               	movwf	0
-  2088  0613  0A84               	incf	4,f
-  2089  0614  3000               	movlw	0
-  2090  0615  0080               	movwf	0
-  2091  0616                     l76:	
-  2092                           ;security lock.c: 103:  else
-  2093                           
-  2094                           
-  2095                           ;security lock.c: 102:   RD5 = 1;
-  2096  0616  1887               	btfsc	7,1	;volatile
-  2097  0617  2E19               	goto	u701
-  2098  0618  2E1A               	goto	u700
-  2099  0619                     u701:
-  2100  0619  2E16               	goto	l76
-  2101  061A                     u700:
-  2102  061A  2E6A               	goto	l96
-  2103  061B                     l75:	
-  2104                           ;security lock.c: 105:  if (data_bit & 4)
-  2105                           
-  2106                           
-  2107                           ;security lock.c: 106:   RD6 = 1;
-  2108  061B  1D07               	btfss	7,2	;volatile
-  2109  061C  2E1E               	goto	u711
-  2110  061D  2E1F               	goto	u710
-  2111  061E                     u711:
-  2112  061E  2E2F               	goto	l79
-  2113  061F                     u710:
-  2114  061F                     l1048:
-  2115                           
-  2116                           ;security lock.c: 107:  else
-  2117  061F  0870               	movf	get_colm@i,w
-  2118  0620  00F2               	movwf	??_get_colm
-  2119  0621  0772               	addwf	??_get_colm,w
-  2120  0622  3E20               	addlw	(low (_input| 0))& (0+255)
-  2121  0623  0084               	movwf	4
-  2122  0624  3009               	movlw	9
-  2123  0625  1383               	bcf	3,7	;select IRP bank0
-  2124  0626  0080               	movwf	0
-  2125  0627  0A84               	incf	4,f
-  2126  0628  3000               	movlw	0
-  2127  0629  0080               	movwf	0
-  2128  062A                     l80:	
-  2129                           ;security lock.c: 109:  if (data_bit & 8)
-  2130                           
-  2131                           
-  2132                           ;security lock.c: 108:   RD6 = 0;
-  2133  062A  1907               	btfsc	7,2	;volatile
-  2134  062B  2E2D               	goto	u721
-  2135  062C  2E2E               	goto	u720
-  2136  062D                     u721:
-  2137  062D  2E2A               	goto	l80
-  2138  062E                     u720:
-  2139  062E  2E6A               	goto	l96
-  2140  062F                     l79:	
-  2141                           ;security lock.c: 111:  else
-  2142                           
-  2143                           
-  2144                           ;security lock.c: 112:   RD7 = 0;
-  2145  062F  1787               	bsf	7,7	;volatile
-  2146                           
-  2147                           ;security lock.c: 113: }
-  2148  0630  1307               	bcf	7,6	;volatile
-  2149                           
-  2150                           ;security lock.c: 114: 
-  2151  0631  1C07               	btfss	7,0	;volatile
-  2152  0632  2E34               	goto	u731
-  2153  0633  2E35               	goto	u730
-  2154  0634                     u731:
-  2155  0634  2E45               	goto	l83
-  2156  0635                     u730:
-  2157  0635                     l1050:
-  2158                           
-  2159                           ;security lock.c: 115: void lcd_cmd(char a)
-  2160  0635  0870               	movf	get_colm@i,w
-  2161  0636  00F2               	movwf	??_get_colm
-  2162  0637  0772               	addwf	??_get_colm,w
-  2163  0638  3E20               	addlw	(low (_input| 0))& (0+255)
-  2164  0639  0084               	movwf	4
-  2165  063A  300B               	movlw	11
-  2166  063B  1383               	bcf	3,7	;select IRP bank0
-  2167  063C  0080               	movwf	0
-  2168  063D  0A84               	incf	4,f
-  2169  063E  3000               	movlw	0
-  2170  063F  0080               	movwf	0
-  2171  0640                     l84:	
-  2172                           ;security lock.c: 117:  RD2 = 0;
-  2173                           
-  2174                           
-  2175                           ;security lock.c: 116: {
-  2176  0640  1807               	btfsc	7,0	;volatile
-  2177  0641  2E43               	goto	u741
-  2178  0642  2E44               	goto	u740
-  2179  0643                     u741:
-  2180  0643  2E40               	goto	l84
-  2181  0644                     u740:
-  2182  0644  2E6A               	goto	l96
-  2183  0645                     l83:	
-  2184                           ;security lock.c: 119:  RD3 = 1;
-  2185                           
-  2186                           
-  2187                           ;security lock.c: 120:  _delay((unsigned long)((4)*(20000000/4000.0)));
-  2188  0645  1C87               	btfss	7,1	;volatile
-  2189  0646  2E48               	goto	u751
-  2190  0647  2E49               	goto	u750
-  2191  0648                     u751:
-  2192  0648  2E57               	goto	l87
-  2193  0649                     u750:
-  2194  0649                     l1052:
-  2195                           
-  2196                           ;security lock.c: 121:  RD3 = 0;
-  2197  0649  0870               	movf	get_colm@i,w
-  2198  064A  00F2               	movwf	??_get_colm
-  2199  064B  0772               	addwf	??_get_colm,w
-  2200  064C  3E20               	addlw	(low (_input| 0))& (0+255)
-  2201  064D  0084               	movwf	4
-  2202  064E  1383               	bcf	3,7	;select IRP bank0
-  2203  064F  0180               	clrf	0
-  2204  0650  0A84               	incf	4,f
-  2205  0651  0180               	clrf	0
-  2206  0652                     l88:	
-  2207                           ;security lock.c: 123: 
-  2208                           
-  2209                           
-  2210                           ;security lock.c: 122: }
-  2211  0652  1887               	btfsc	7,1	;volatile
-  2212  0653  2E55               	goto	u761
-  2213  0654  2E56               	goto	u760
-  2214  0655                     u761:
-  2215  0655  2E52               	goto	l88
-  2216  0656                     u760:
-  2217  0656  2E6A               	goto	l96
-  2218  0657                     l87:	
-  2219                           ;security lock.c: 125: {
-  2220                           
-  2221                           
-  2222                           ;security lock.c: 126:  lcd_cmd(0);
-  2223  0657  1D07               	btfss	7,2	;volatile
-  2224  0658  2E5A               	goto	u771
-  2225  0659  2E5B               	goto	u770
-  2226  065A                     u771:
-  2227  065A  2D71               	goto	l45
-  2228  065B                     u770:
-  2229  065B                     l1054:
-  2230                           
-  2231                           ;security lock.c: 127:  lcd_cmd(1);
-  2232  065B  0870               	movf	get_colm@i,w
-  2233  065C  00F2               	movwf	??_get_colm
-  2234  065D  0772               	addwf	??_get_colm,w
-  2235  065E  3E20               	addlw	(low (_input| 0))& (0+255)
-  2236  065F  0084               	movwf	4
-  2237  0660  300C               	movlw	12
-  2238  0661  1383               	bcf	3,7	;select IRP bank0
-  2239  0662  0080               	movwf	0
-  2240  0663  0A84               	incf	4,f
-  2241  0664  3000               	movlw	0
-  2242  0665  0080               	movwf	0
-  2243  0666                     l92:	
-  2244                           ;security lock.c: 129: 
-  2245                           
-  2246                           
-  2247                           ;security lock.c: 128: }
-  2248  0666  1907               	btfsc	7,2	;volatile
-  2249  0667  2E69               	goto	u781
-  2250  0668  2E6A               	goto	u780
-  2251  0669                     u781:
-  2252  0669  2E66               	goto	l92
-  2253  066A                     u780:
-  2254  066A                     l96:
-  2255  066A  0008               	return
-  2256  066B                     __end_of_get_colm:
-  2257  007E                     btemp	set	126	;btemp
-  2258  007E                     wtemp0	set	126
-  2259                           
-  2260                           	psect	config
+  1496 ;; Auto vars:     Size  Location     Type
+  1497 ;;		None
+  1498 ;; Return value:  Size  Location     Type
+  1499 ;;                  1    wreg      void 
+  1500 ;; Registers used:
+  1501 ;;		wreg, status,2, status,0, pclath, cstack
+  1502 ;; Tracked objects:
+  1503 ;;		On entry : 0/0
+  1504 ;;		On exit  : 0/0
+  1505 ;;		Unchanged: 0/0
+  1506 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1507 ;;      Params:         0       0       0       0       0
+  1508 ;;      Locals:         0       0       0       0       0
+  1509 ;;      Temps:          0       0       0       0       0
+  1510 ;;      Totals:         0       0       0       0       0
+  1511 ;;Total ram usage:        0 bytes
+  1512 ;; Hardware stack levels used:    1
+  1513 ;; Hardware stack levels required when called:    2
+  1514 ;; This function calls:
+  1515 ;;		_lcd_cmd
+  1516 ;; This function is called by:
+  1517 ;;		_main
+  1518 ;; This function uses a non-reentrant model
+  1519 ;;
+  1520                           
+  1521                           
+  1522                           ;psect for function _lcd_clear
+  1523  03EA                     _lcd_clear:
+  1524  03EA                     l1056:	
+  1525                           ;incstack = 0
+  1526                           ; Regs used in _lcd_clear: [wreg+status,2+status,0+pclath+cstack]
+  1527                           
+  1528                           
+  1529                           ;security lock.c: 167:  lcd_cmd(0x06);
+  1530  03EA  3000               	movlw	0
+  1531  03EB  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
+  1532                           
+  1533                           ;security lock.c: 168: }
+  1534  03F0  3001               	movlw	1
+  1535  03F1  120A  118A  240A  120A  118A  	fcall	_lcd_cmd
+  1536  03F6                     l113:
+  1537  03F6  0008               	return
+  1538  03F7                     __end_of_lcd_clear:
+  1539                           
+  1540                           	psect	text6
+  1541  040A                     __ptext6:	
+  1542 ;; *************** function _lcd_cmd *****************
+  1543 ;; Defined at:
+  1544 ;;		line 156 in file "security lock.c"
+  1545 ;; Parameters:    Size  Location     Type
+  1546 ;;  a               1    wreg     unsigned char 
+  1547 ;; Auto vars:     Size  Location     Type
+  1548 ;;  a               1    3[COMMON] unsigned char 
+  1549 ;; Return value:  Size  Location     Type
+  1550 ;;                  1    wreg      void 
+  1551 ;; Registers used:
+  1552 ;;		wreg, status,2, status,0, pclath, cstack
+  1553 ;; Tracked objects:
+  1554 ;;		On entry : 0/0
+  1555 ;;		On exit  : 0/0
+  1556 ;;		Unchanged: 0/0
+  1557 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1558 ;;      Params:         0       0       0       0       0
+  1559 ;;      Locals:         1       0       0       0       0
+  1560 ;;      Temps:          2       0       0       0       0
+  1561 ;;      Totals:         3       0       0       0       0
+  1562 ;;Total ram usage:        3 bytes
+  1563 ;; Hardware stack levels used:    1
+  1564 ;; Hardware stack levels required when called:    1
+  1565 ;; This function calls:
+  1566 ;;		_lcd_setbit
+  1567 ;; This function is called by:
+  1568 ;;		_lcd_clear
+  1569 ;;		_lcd_set_cursor
+  1570 ;;		_lcd_start
+  1571 ;; This function uses a non-reentrant model
+  1572 ;;
+  1573                           
+  1574                           
+  1575                           ;psect for function _lcd_cmd
+  1576  040A                     _lcd_cmd:
+  1577                           
+  1578                           ;incstack = 0
+  1579                           ; Regs used in _lcd_cmd: [wreg+status,2+status,0+pclath+cstack]
+  1580                           ;lcd_cmd@a stored from wreg
+  1581  040A  00F3               	movwf	lcd_cmd@a
+  1582  040B                     l990:
+  1583                           
+  1584                           ;security lock.c: 156:  lcd_cmd(0x03);;security lock.c: 157:  _delay((unsigned long)((5)
+      +                          *(20000000/4000.0)));;security lock.c: 158:  lcd_cmd(0x03);
+  1585  040B  1283               	bcf	3,5	;RP0=0, select bank0
+  1586  040C  1303               	bcf	3,6	;RP1=0, select bank0
+  1587  040D  1108               	bcf	8,2	;volatile
+  1588  040E                     l992:
+  1589                           
+  1590                           ;security lock.c: 159:  _delay((unsigned long)((11)*(20000000/4000.0)));
+  1591  040E  0873               	movf	lcd_cmd@a,w
+  1592  040F  120A  118A  2424  120A  118A  	fcall	_lcd_setbit
+  1593  0414                     l994:
+  1594                           
+  1595                           ;security lock.c: 160:  lcd_cmd(0x03);
+  1596  0414  1283               	bcf	3,5	;RP0=0, select bank0
+  1597  0415  1303               	bcf	3,6	;RP1=0, select bank0
+  1598  0416  1588               	bsf	8,3	;volatile
+  1599  0417                     l996:
+  1600                           
+  1601                           ;security lock.c: 161:  lcd_cmd(0x02);
+  1602  0417  301A               	movlw	26
+  1603  0418  00F2               	movwf	??_lcd_cmd+1
+  1604  0419  30F8               	movlw	248
+  1605  041A  00F1               	movwf	??_lcd_cmd
+  1606  041B                     u997:
+  1607  041B  0BF1               	decfsz	??_lcd_cmd,f
+  1608  041C  2C1B               	goto	u997
+  1609  041D  0BF2               	decfsz	??_lcd_cmd+1,f
+  1610  041E  2C1B               	goto	u997
+  1611  041F  0000               	nop
+  1612  0420                     l998:
+  1613                           
+  1614                           ;security lock.c: 162:  lcd_cmd(0x02);
+  1615  0420  1283               	bcf	3,5	;RP0=0, select bank0
+  1616  0421  1303               	bcf	3,6	;RP1=0, select bank0
+  1617  0422  1188               	bcf	8,3	;volatile
+  1618  0423                     l110:
+  1619  0423  0008               	return
+  1620  0424                     __end_of_lcd_cmd:
+  1621                           
+  1622                           	psect	text7
+  1623  0424                     __ptext7:	
+  1624 ;; *************** function _lcd_setbit *****************
+  1625 ;; Defined at:
+  1626 ;;		line 136 in file "security lock.c"
+  1627 ;; Parameters:    Size  Location     Type
+  1628 ;;  data_bit        1    wreg     unsigned char 
+  1629 ;; Auto vars:     Size  Location     Type
+  1630 ;;  data_bit        1    0[COMMON] unsigned char 
+  1631 ;; Return value:  Size  Location     Type
+  1632 ;;                  1    wreg      void 
+  1633 ;; Registers used:
+  1634 ;;		wreg
+  1635 ;; Tracked objects:
+  1636 ;;		On entry : 0/0
+  1637 ;;		On exit  : 0/0
+  1638 ;;		Unchanged: 0/0
+  1639 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1640 ;;      Params:         0       0       0       0       0
+  1641 ;;      Locals:         1       0       0       0       0
+  1642 ;;      Temps:          0       0       0       0       0
+  1643 ;;      Totals:         1       0       0       0       0
+  1644 ;;Total ram usage:        1 bytes
+  1645 ;; Hardware stack levels used:    1
+  1646 ;; This function calls:
+  1647 ;;		Nothing
+  1648 ;; This function is called by:
+  1649 ;;		_lcd_cmd
+  1650 ;;		_lcd_start
+  1651 ;;		_lcd_print_char
+  1652 ;; This function uses a non-reentrant model
+  1653 ;;
+  1654                           
+  1655                           
+  1656                           ;psect for function _lcd_setbit
+  1657  0424                     _lcd_setbit:
+  1658                           
+  1659                           ;incstack = 0
+  1660                           ; Regs used in _lcd_setbit: [wreg]
+  1661                           ;lcd_setbit@data_bit stored from wreg
+  1662  0424  00F0               	movwf	lcd_setbit@data_bit
+  1663  0425                     l980:
+  1664                           
+  1665                           ;security lock.c: 136:   temp = 0x80 + b - 1;;security lock.c: 137:   z = temp >> 4;;sec
+      +                          urity lock.c: 138:   y = temp & 0x0F;
+  1666  0425  1C70               	btfss	lcd_setbit@data_bit,0
+  1667  0426  2C28               	goto	u481
+  1668  0427  2C29               	goto	u480
+  1669  0428                     u481:
+  1670  0428  2C2D               	goto	l99
+  1671  0429                     u480:
+  1672  0429                     l982:
+  1673                           
+  1674                           ;security lock.c: 139:   lcd_cmd(z);
+  1675  0429  1283               	bcf	3,5	;RP0=0, select bank0
+  1676  042A  1303               	bcf	3,6	;RP1=0, select bank0
+  1677  042B  1608               	bsf	8,4	;volatile
+  1678  042C  2C30               	goto	l100
+  1679  042D                     l99:	
+  1680                           ;security lock.c: 140:   lcd_cmd(y);
+  1681                           
+  1682                           
+  1683                           ;security lock.c: 141:  } else if (a == 2) {
+  1684  042D  1283               	bcf	3,5	;RP0=0, select bank0
+  1685  042E  1303               	bcf	3,6	;RP1=0, select bank0
+  1686  042F  1208               	bcf	8,4	;volatile
+  1687  0430                     l100:
+  1688                           
+  1689                           ;security lock.c: 142:   temp = 0xC0 + b - 1;
+  1690  0430  1CF0               	btfss	lcd_setbit@data_bit,1
+  1691  0431  2C33               	goto	u491
+  1692  0432  2C34               	goto	u490
+  1693  0433                     u491:
+  1694  0433  2C36               	goto	l101
+  1695  0434                     u490:
+  1696  0434                     l984:
+  1697                           
+  1698                           ;security lock.c: 143:   z = temp >> 4;
+  1699  0434  1688               	bsf	8,5	;volatile
+  1700  0435  2C37               	goto	l102
+  1701  0436                     l101:	
+  1702                           ;security lock.c: 144:   y = temp & 0x0F;
+  1703                           
+  1704                           
+  1705                           ;security lock.c: 145:   lcd_cmd(z);
+  1706  0436  1288               	bcf	8,5	;volatile
+  1707  0437                     l102:
+  1708                           
+  1709                           ;security lock.c: 146:   lcd_cmd(y);
+  1710  0437  1D70               	btfss	lcd_setbit@data_bit,2
+  1711  0438  2C3A               	goto	u501
+  1712  0439  2C3B               	goto	u500
+  1713  043A                     u501:
+  1714  043A  2C3D               	goto	l103
+  1715  043B                     u500:
+  1716  043B                     l986:
+  1717                           
+  1718                           ;security lock.c: 147:  }
+  1719  043B  1708               	bsf	8,6	;volatile
+  1720  043C  2C3E               	goto	l104
+  1721  043D                     l103:	
+  1722                           ;security lock.c: 148: }
+  1723                           
+  1724                           
+  1725                           ;security lock.c: 149: 
+  1726  043D  1308               	bcf	8,6	;volatile
+  1727  043E                     l104:
+  1728                           
+  1729                           ;security lock.c: 150: void lcd_start()
+  1730  043E  1DF0               	btfss	lcd_setbit@data_bit,3
+  1731  043F  2C41               	goto	u511
+  1732  0440  2C42               	goto	u510
+  1733  0441                     u511:
+  1734  0441  2C44               	goto	l105
+  1735  0442                     u510:
+  1736  0442                     l988:
+  1737                           
+  1738                           ;security lock.c: 151: {
+  1739  0442  1788               	bsf	8,7	;volatile
+  1740  0443  2C45               	goto	l107
+  1741  0444                     l105:	
+  1742                           ;security lock.c: 152:  lcd_setbit(0x00);
+  1743                           
+  1744                           
+  1745                           ;security lock.c: 153: 
+  1746  0444  1388               	bcf	8,7	;volatile
+  1747  0445                     l107:
+  1748  0445  0008               	return
+  1749  0446                     __end_of_lcd_setbit:
+  1750                           
+  1751                           	psect	text8
+  1752  0571                     __ptext8:	
+  1753 ;; *************** function _get_colm *****************
+  1754 ;; Defined at:
+  1755 ;;		line 50 in file "security lock.c"
+  1756 ;; Parameters:    Size  Location     Type
+  1757 ;;  i               2    0[COMMON] int 
+  1758 ;; Auto vars:     Size  Location     Type
+  1759 ;;		None
+  1760 ;; Return value:  Size  Location     Type
+  1761 ;;                  1    wreg      void 
+  1762 ;; Registers used:
+  1763 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+  1764 ;; Tracked objects:
+  1765 ;;		On entry : 0/0
+  1766 ;;		On exit  : 0/0
+  1767 ;;		Unchanged: 0/0
+  1768 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1769 ;;      Params:         2       0       0       0       0
+  1770 ;;      Locals:         0       0       0       0       0
+  1771 ;;      Temps:          1       0       0       0       0
+  1772 ;;      Totals:         3       0       0       0       0
+  1773 ;;Total ram usage:        3 bytes
+  1774 ;; Hardware stack levels used:    1
+  1775 ;; This function calls:
+  1776 ;;		Nothing
+  1777 ;; This function is called by:
+  1778 ;;		_main
+  1779 ;; This function uses a non-reentrant model
+  1780 ;;
+  1781                           
+  1782                           
+  1783                           ;psect for function _get_colm
+  1784  0571                     _get_colm:
+  1785  0571                     l45:	
+  1786                           ;incstack = 0
+  1787                           ; Regs used in _get_colm: [wreg-fsr0h+status,2+status,0]
+  1788                           ;security lock.c: 50:    while (RC2 == 1) {;security lock.c: 51:    };security lock.c: 5
+      +                          2:    break;
+  1789                           
+  1790                           
+  1791                           ;security lock.c: 53:   }
+  1792  0571  1283               	bcf	3,5	;RP0=0, select bank0
+  1793  0572  1303               	bcf	3,6	;RP1=0, select bank0
+  1794  0573  1607               	bsf	7,4	;volatile
+  1795                           
+  1796                           ;security lock.c: 54:   RC6 = 1;
+  1797  0574  1387               	bcf	7,7	;volatile
+  1798  0575  1307               	bcf	7,6	;volatile
+  1799  0576  1287               	bcf	7,5	;volatile
+  1800                           
+  1801                           ;security lock.c: 55:   RC5 = 0;
+  1802  0577  1C07               	btfss	7,0	;volatile
+  1803  0578  2D7A               	goto	u551
+  1804  0579  2D7B               	goto	u550
+  1805  057A                     u551:
+  1806  057A  2D8B               	goto	l46
+  1807  057B                     u550:
+  1808  057B                     l1032:
+  1809                           
+  1810                           ;security lock.c: 56:   if (RC0 == 1) {
+  1811  057B  0870               	movf	get_colm@i,w
+  1812  057C  00F2               	movwf	??_get_colm
+  1813  057D  0772               	addwf	??_get_colm,w
+  1814  057E  3E20               	addlw	(low (_input| 0))& (0+255)
+  1815  057F  0084               	movwf	4
+  1816  0580  3001               	movlw	1
+  1817  0581  1383               	bcf	3,7	;select IRP bank0
+  1818  0582  0080               	movwf	0
+  1819  0583  0A84               	incf	4,f
+  1820  0584  3000               	movlw	0
+  1821  0585  0080               	movwf	0
+  1822  0586                     l47:	
+  1823                           ;security lock.c: 58:    while (RC0 == 1) {
+  1824                           
+  1825                           
+  1826                           ;security lock.c: 57:    input[i] = 7;
+  1827  0586  1807               	btfsc	7,0	;volatile
+  1828  0587  2D89               	goto	u561
+  1829  0588  2D8A               	goto	u560
+  1830  0589                     u561:
+  1831  0589  2D86               	goto	l47
+  1832  058A                     u560:
+  1833  058A  2E6A               	goto	l96
+  1834  058B                     l46:	
+  1835                           ;security lock.c: 60:    break;
+  1836                           
+  1837                           
+  1838                           ;security lock.c: 61:   }
+  1839  058B  1C87               	btfss	7,1	;volatile
+  1840  058C  2D8E               	goto	u571
+  1841  058D  2D8F               	goto	u570
+  1842  058E                     u571:
+  1843  058E  2D9F               	goto	l51
+  1844  058F                     u570:
+  1845  058F                     l1034:
+  1846                           
+  1847                           ;security lock.c: 62:   if (RC1 == 1) {
+  1848  058F  0870               	movf	get_colm@i,w
+  1849  0590  00F2               	movwf	??_get_colm
+  1850  0591  0772               	addwf	??_get_colm,w
+  1851  0592  3E20               	addlw	(low (_input| 0))& (0+255)
+  1852  0593  0084               	movwf	4
+  1853  0594  3002               	movlw	2
+  1854  0595  1383               	bcf	3,7	;select IRP bank0
+  1855  0596  0080               	movwf	0
+  1856  0597  0A84               	incf	4,f
+  1857  0598  3000               	movlw	0
+  1858  0599  0080               	movwf	0
+  1859  059A                     l52:	
+  1860                           ;security lock.c: 64:    while (RC1 == 1) {
+  1861                           
+  1862                           
+  1863                           ;security lock.c: 63:    input[i] = 8;
+  1864  059A  1887               	btfsc	7,1	;volatile
+  1865  059B  2D9D               	goto	u581
+  1866  059C  2D9E               	goto	u580
+  1867  059D                     u581:
+  1868  059D  2D9A               	goto	l52
+  1869  059E                     u580:
+  1870  059E  2E6A               	goto	l96
+  1871  059F                     l51:	
+  1872                           ;security lock.c: 66:    break;
+  1873                           
+  1874                           
+  1875                           ;security lock.c: 67:   }
+  1876  059F  1D07               	btfss	7,2	;volatile
+  1877  05A0  2DA2               	goto	u591
+  1878  05A1  2DA3               	goto	u590
+  1879  05A2                     u591:
+  1880  05A2  2DB3               	goto	l55
+  1881  05A3                     u590:
+  1882  05A3                     l1036:
+  1883                           
+  1884                           ;security lock.c: 68:   if (RC2 == 1) {
+  1885  05A3  0870               	movf	get_colm@i,w
+  1886  05A4  00F2               	movwf	??_get_colm
+  1887  05A5  0772               	addwf	??_get_colm,w
+  1888  05A6  3E20               	addlw	(low (_input| 0))& (0+255)
+  1889  05A7  0084               	movwf	4
+  1890  05A8  3003               	movlw	3
+  1891  05A9  1383               	bcf	3,7	;select IRP bank0
+  1892  05AA  0080               	movwf	0
+  1893  05AB  0A84               	incf	4,f
+  1894  05AC  3000               	movlw	0
+  1895  05AD  0080               	movwf	0
+  1896  05AE                     l56:	
+  1897                           ;security lock.c: 70:    while (RC2 == 1) {
+  1898                           
+  1899                           
+  1900                           ;security lock.c: 69:    input[i] = 9;
+  1901  05AE  1907               	btfsc	7,2	;volatile
+  1902  05AF  2DB1               	goto	u601
+  1903  05B0  2DB2               	goto	u600
+  1904  05B1                     u601:
+  1905  05B1  2DAE               	goto	l56
+  1906  05B2                     u600:
+  1907  05B2  2E6A               	goto	l96
+  1908  05B3                     l55:	
+  1909                           ;security lock.c: 72:    break;
+  1910                           
+  1911                           
+  1912                           ;security lock.c: 73:   }
+  1913  05B3  1687               	bsf	7,5	;volatile
+  1914                           
+  1915                           ;security lock.c: 74:   RC7 = 1;
+  1916  05B4  1207               	bcf	7,4	;volatile
+  1917                           
+  1918                           ;security lock.c: 75:   RC6 = 0;
+  1919  05B5  1C07               	btfss	7,0	;volatile
+  1920  05B6  2DB8               	goto	u611
+  1921  05B7  2DB9               	goto	u610
+  1922  05B8                     u611:
+  1923  05B8  2DC9               	goto	l59
+  1924  05B9                     u610:
+  1925  05B9                     l1038:
+  1926                           
+  1927                           ;security lock.c: 76:   if (RC0 == 1) {
+  1928  05B9  0870               	movf	get_colm@i,w
+  1929  05BA  00F2               	movwf	??_get_colm
+  1930  05BB  0772               	addwf	??_get_colm,w
+  1931  05BC  3E20               	addlw	(low (_input| 0))& (0+255)
+  1932  05BD  0084               	movwf	4
+  1933  05BE  3004               	movlw	4
+  1934  05BF  1383               	bcf	3,7	;select IRP bank0
+  1935  05C0  0080               	movwf	0
+  1936  05C1  0A84               	incf	4,f
+  1937  05C2  3000               	movlw	0
+  1938  05C3  0080               	movwf	0
+  1939  05C4                     l60:	
+  1940                           ;security lock.c: 78:    while (RC0 == 1) {
+  1941                           
+  1942                           
+  1943                           ;security lock.c: 77:    input[i] = 11;
+  1944  05C4  1807               	btfsc	7,0	;volatile
+  1945  05C5  2DC7               	goto	u621
+  1946  05C6  2DC8               	goto	u620
+  1947  05C7                     u621:
+  1948  05C7  2DC4               	goto	l60
+  1949  05C8                     u620:
+  1950  05C8  2E6A               	goto	l96
+  1951  05C9                     l59:	
+  1952                           ;security lock.c: 80:    break;
+  1953                           
+  1954                           
+  1955                           ;security lock.c: 81:   }
+  1956  05C9  1C87               	btfss	7,1	;volatile
+  1957  05CA  2DCC               	goto	u631
+  1958  05CB  2DCD               	goto	u630
+  1959  05CC                     u631:
+  1960  05CC  2DDD               	goto	l63
+  1961  05CD                     u630:
+  1962  05CD                     l1040:
+  1963                           
+  1964                           ;security lock.c: 82:   if (RC1 == 1) {
+  1965  05CD  0870               	movf	get_colm@i,w
+  1966  05CE  00F2               	movwf	??_get_colm
+  1967  05CF  0772               	addwf	??_get_colm,w
+  1968  05D0  3E20               	addlw	(low (_input| 0))& (0+255)
+  1969  05D1  0084               	movwf	4
+  1970  05D2  3005               	movlw	5
+  1971  05D3  1383               	bcf	3,7	;select IRP bank0
+  1972  05D4  0080               	movwf	0
+  1973  05D5  0A84               	incf	4,f
+  1974  05D6  3000               	movlw	0
+  1975  05D7  0080               	movwf	0
+  1976  05D8                     l64:	
+  1977                           ;security lock.c: 84:    while (RC1 == 1) {
+  1978                           
+  1979                           
+  1980                           ;security lock.c: 83:    input[i] = 0;
+  1981  05D8  1887               	btfsc	7,1	;volatile
+  1982  05D9  2DDB               	goto	u641
+  1983  05DA  2DDC               	goto	u640
+  1984  05DB                     u641:
+  1985  05DB  2DD8               	goto	l64
+  1986  05DC                     u640:
+  1987  05DC  2E6A               	goto	l96
+  1988  05DD                     l63:	
+  1989                           ;security lock.c: 86:    break;
+  1990                           
+  1991                           
+  1992                           ;security lock.c: 87:   }
+  1993  05DD  1D07               	btfss	7,2	;volatile
+  1994  05DE  2DE0               	goto	u651
+  1995  05DF  2DE1               	goto	u650
+  1996  05E0                     u651:
+  1997  05E0  2DF1               	goto	l67
+  1998  05E1                     u650:
+  1999  05E1                     l1042:
+  2000                           
+  2001                           ;security lock.c: 88:   if (RC2 == 1) {
+  2002  05E1  0870               	movf	get_colm@i,w
+  2003  05E2  00F2               	movwf	??_get_colm
+  2004  05E3  0772               	addwf	??_get_colm,w
+  2005  05E4  3E20               	addlw	(low (_input| 0))& (0+255)
+  2006  05E5  0084               	movwf	4
+  2007  05E6  3006               	movlw	6
+  2008  05E7  1383               	bcf	3,7	;select IRP bank0
+  2009  05E8  0080               	movwf	0
+  2010  05E9  0A84               	incf	4,f
+  2011  05EA  3000               	movlw	0
+  2012  05EB  0080               	movwf	0
+  2013  05EC                     l68:	
+  2014                           ;security lock.c: 90:    while (RC2 == 1) {
+  2015                           
+  2016                           
+  2017                           ;security lock.c: 89:    input[i] = 12;
+  2018  05EC  1907               	btfsc	7,2	;volatile
+  2019  05ED  2DEF               	goto	u661
+  2020  05EE  2DF0               	goto	u660
+  2021  05EF                     u661:
+  2022  05EF  2DEC               	goto	l68
+  2023  05F0                     u660:
+  2024  05F0  2E6A               	goto	l96
+  2025  05F1                     l67:	
+  2026                           ;security lock.c: 92:    break;
+  2027                           
+  2028                           
+  2029                           ;security lock.c: 93:   }
+  2030  05F1  1707               	bsf	7,6	;volatile
+  2031                           
+  2032                           ;security lock.c: 94:  }
+  2033  05F2  1287               	bcf	7,5	;volatile
+  2034                           
+  2035                           ;security lock.c: 95: }
+  2036  05F3  1C07               	btfss	7,0	;volatile
+  2037  05F4  2DF6               	goto	u671
+  2038  05F5  2DF7               	goto	u670
+  2039  05F6                     u671:
+  2040  05F6  2E07               	goto	l71
+  2041  05F7                     u670:
+  2042  05F7                     l1044:
+  2043                           
+  2044                           ;security lock.c: 96: 
+  2045  05F7  0870               	movf	get_colm@i,w
+  2046  05F8  00F2               	movwf	??_get_colm
+  2047  05F9  0772               	addwf	??_get_colm,w
+  2048  05FA  3E20               	addlw	(low (_input| 0))& (0+255)
+  2049  05FB  0084               	movwf	4
+  2050  05FC  3007               	movlw	7
+  2051  05FD  1383               	bcf	3,7	;select IRP bank0
+  2052  05FE  0080               	movwf	0
+  2053  05FF  0A84               	incf	4,f
+  2054  0600  3000               	movlw	0
+  2055  0601  0080               	movwf	0
+  2056  0602                     l72:	
+  2057                           ;security lock.c: 98: {
+  2058                           
+  2059                           
+  2060                           ;security lock.c: 97: void lcd_setbit(char data_bit)
+  2061  0602  1807               	btfsc	7,0	;volatile
+  2062  0603  2E05               	goto	u681
+  2063  0604  2E06               	goto	u680
+  2064  0605                     u681:
+  2065  0605  2E02               	goto	l72
+  2066  0606                     u680:
+  2067  0606  2E6A               	goto	l96
+  2068  0607                     l71:	
+  2069                           ;security lock.c: 100:   RD4 = 1;
+  2070                           
+  2071                           
+  2072                           ;security lock.c: 101:  else
+  2073  0607  1C87               	btfss	7,1	;volatile
+  2074  0608  2E0A               	goto	u691
+  2075  0609  2E0B               	goto	u690
+  2076  060A                     u691:
+  2077  060A  2E1B               	goto	l75
+  2078  060B                     u690:
+  2079  060B                     l1046:
+  2080                           
+  2081                           ;security lock.c: 102:   RD4 = 0;
+  2082  060B  0870               	movf	get_colm@i,w
+  2083  060C  00F2               	movwf	??_get_colm
+  2084  060D  0772               	addwf	??_get_colm,w
+  2085  060E  3E20               	addlw	(low (_input| 0))& (0+255)
+  2086  060F  0084               	movwf	4
+  2087  0610  3008               	movlw	8
+  2088  0611  1383               	bcf	3,7	;select IRP bank0
+  2089  0612  0080               	movwf	0
+  2090  0613  0A84               	incf	4,f
+  2091  0614  3000               	movlw	0
+  2092  0615  0080               	movwf	0
+  2093  0616                     l76:	
+  2094                           ;security lock.c: 104:   RD5 = 1;
+  2095                           
+  2096                           
+  2097                           ;security lock.c: 103:  if (data_bit & 2)
+  2098  0616  1887               	btfsc	7,1	;volatile
+  2099  0617  2E19               	goto	u701
+  2100  0618  2E1A               	goto	u700
+  2101  0619                     u701:
+  2102  0619  2E16               	goto	l76
+  2103  061A                     u700:
+  2104  061A  2E6A               	goto	l96
+  2105  061B                     l75:	
+  2106                           ;security lock.c: 106:   RD5 = 0;
+  2107                           
+  2108                           
+  2109                           ;security lock.c: 107:  if (data_bit & 4)
+  2110  061B  1D07               	btfss	7,2	;volatile
+  2111  061C  2E1E               	goto	u711
+  2112  061D  2E1F               	goto	u710
+  2113  061E                     u711:
+  2114  061E  2E2F               	goto	l79
+  2115  061F                     u710:
+  2116  061F                     l1048:
+  2117                           
+  2118                           ;security lock.c: 108:   RD6 = 1;
+  2119  061F  0870               	movf	get_colm@i,w
+  2120  0620  00F2               	movwf	??_get_colm
+  2121  0621  0772               	addwf	??_get_colm,w
+  2122  0622  3E20               	addlw	(low (_input| 0))& (0+255)
+  2123  0623  0084               	movwf	4
+  2124  0624  3009               	movlw	9
+  2125  0625  1383               	bcf	3,7	;select IRP bank0
+  2126  0626  0080               	movwf	0
+  2127  0627  0A84               	incf	4,f
+  2128  0628  3000               	movlw	0
+  2129  0629  0080               	movwf	0
+  2130  062A                     l80:	
+  2131                           ;security lock.c: 110:   RD6 = 0;
+  2132                           
+  2133                           
+  2134                           ;security lock.c: 109:  else
+  2135  062A  1907               	btfsc	7,2	;volatile
+  2136  062B  2E2D               	goto	u721
+  2137  062C  2E2E               	goto	u720
+  2138  062D                     u721:
+  2139  062D  2E2A               	goto	l80
+  2140  062E                     u720:
+  2141  062E  2E6A               	goto	l96
+  2142  062F                     l79:	
+  2143                           ;security lock.c: 112:   RD7 = 1;
+  2144                           
+  2145                           
+  2146                           ;security lock.c: 113:  else
+  2147  062F  1787               	bsf	7,7	;volatile
+  2148                           
+  2149                           ;security lock.c: 114:   RD7 = 0;
+  2150  0630  1307               	bcf	7,6	;volatile
+  2151                           
+  2152                           ;security lock.c: 115: }
+  2153  0631  1C07               	btfss	7,0	;volatile
+  2154  0632  2E34               	goto	u731
+  2155  0633  2E35               	goto	u730
+  2156  0634                     u731:
+  2157  0634  2E45               	goto	l83
+  2158  0635                     u730:
+  2159  0635                     l1050:
+  2160                           
+  2161                           ;security lock.c: 116: 
+  2162  0635  0870               	movf	get_colm@i,w
+  2163  0636  00F2               	movwf	??_get_colm
+  2164  0637  0772               	addwf	??_get_colm,w
+  2165  0638  3E20               	addlw	(low (_input| 0))& (0+255)
+  2166  0639  0084               	movwf	4
+  2167  063A  300B               	movlw	11
+  2168  063B  1383               	bcf	3,7	;select IRP bank0
+  2169  063C  0080               	movwf	0
+  2170  063D  0A84               	incf	4,f
+  2171  063E  3000               	movlw	0
+  2172  063F  0080               	movwf	0
+  2173  0640                     l84:	
+  2174                           ;security lock.c: 118: {
+  2175                           
+  2176                           
+  2177                           ;security lock.c: 117: void lcd_cmd(char a)
+  2178  0640  1807               	btfsc	7,0	;volatile
+  2179  0641  2E43               	goto	u741
+  2180  0642  2E44               	goto	u740
+  2181  0643                     u741:
+  2182  0643  2E40               	goto	l84
+  2183  0644                     u740:
+  2184  0644  2E6A               	goto	l96
+  2185  0645                     l83:	
+  2186                           ;security lock.c: 120:  lcd_setbit(a);
+  2187                           
+  2188                           
+  2189                           ;security lock.c: 121:  RD3 = 1;
+  2190  0645  1C87               	btfss	7,1	;volatile
+  2191  0646  2E48               	goto	u751
+  2192  0647  2E49               	goto	u750
+  2193  0648                     u751:
+  2194  0648  2E57               	goto	l87
+  2195  0649                     u750:
+  2196  0649                     l1052:
+  2197                           
+  2198                           ;security lock.c: 122:  _delay((unsigned long)((4)*(20000000/4000.0)));
+  2199  0649  0870               	movf	get_colm@i,w
+  2200  064A  00F2               	movwf	??_get_colm
+  2201  064B  0772               	addwf	??_get_colm,w
+  2202  064C  3E20               	addlw	(low (_input| 0))& (0+255)
+  2203  064D  0084               	movwf	4
+  2204  064E  1383               	bcf	3,7	;select IRP bank0
+  2205  064F  0180               	clrf	0
+  2206  0650  0A84               	incf	4,f
+  2207  0651  0180               	clrf	0
+  2208  0652                     l88:	
+  2209                           ;security lock.c: 124: }
+  2210                           
+  2211                           
+  2212                           ;security lock.c: 123:  RD3 = 0;
+  2213  0652  1887               	btfsc	7,1	;volatile
+  2214  0653  2E55               	goto	u761
+  2215  0654  2E56               	goto	u760
+  2216  0655                     u761:
+  2217  0655  2E52               	goto	l88
+  2218  0656                     u760:
+  2219  0656  2E6A               	goto	l96
+  2220  0657                     l87:	
+  2221                           ;security lock.c: 126: void lcd_clear()
+  2222                           
+  2223                           
+  2224                           ;security lock.c: 127: {
+  2225  0657  1D07               	btfss	7,2	;volatile
+  2226  0658  2E5A               	goto	u771
+  2227  0659  2E5B               	goto	u770
+  2228  065A                     u771:
+  2229  065A  2D71               	goto	l45
+  2230  065B                     u770:
+  2231  065B                     l1054:
+  2232                           
+  2233                           ;security lock.c: 128:  lcd_cmd(0);
+  2234  065B  0870               	movf	get_colm@i,w
+  2235  065C  00F2               	movwf	??_get_colm
+  2236  065D  0772               	addwf	??_get_colm,w
+  2237  065E  3E20               	addlw	(low (_input| 0))& (0+255)
+  2238  065F  0084               	movwf	4
+  2239  0660  300C               	movlw	12
+  2240  0661  1383               	bcf	3,7	;select IRP bank0
+  2241  0662  0080               	movwf	0
+  2242  0663  0A84               	incf	4,f
+  2243  0664  3000               	movlw	0
+  2244  0665  0080               	movwf	0
+  2245  0666                     l92:	
+  2246                           ;security lock.c: 130: }
+  2247                           
+  2248                           
+  2249                           ;security lock.c: 129:  lcd_cmd(1);
+  2250  0666  1907               	btfsc	7,2	;volatile
+  2251  0667  2E69               	goto	u781
+  2252  0668  2E6A               	goto	u780
+  2253  0669                     u781:
+  2254  0669  2E66               	goto	l92
+  2255  066A                     u780:
+  2256  066A                     l96:
+  2257  066A  0008               	return
+  2258  066B                     __end_of_get_colm:
+  2259  007E                     btemp	set	126	;btemp
+  2260  007E                     wtemp0	set	126
   2261                           
-  2262                           ;Config register CONFIG @ 0x2007
-  2263                           ;	Oscillator Selection bits
-  2264                           ;	FOSC = HS, HS oscillator
-  2265                           ;	Watchdog Timer Enable bit
-  2266                           ;	WDTE = OFF, WDT disabled
-  2267                           ;	Power-up Timer Enable bit
-  2268                           ;	PWRTE = ON, PWRT enabled
-  2269                           ;	Brown-out Reset Enable bit
-  2270                           ;	BOREN = ON, BOR enabled
-  2271                           ;	Low-Voltage (Single-Supply) In-Circuit Serial Programming Enable bit
-  2272                           ;	LVP = OFF, RB3 is digital I/O, HV on MCLR must be used for programming
-  2273                           ;	Data EEPROM Memory Code Protection bit
-  2274                           ;	CPD = OFF, Data EEPROM code protection off
-  2275                           ;	Flash Program Memory Write Enable bits
-  2276                           ;	WRT = OFF, Write protection off; all program memory may be written to by EECON control
-  2277                           ;	In-Circuit Debugger Mode bit
-  2278                           ;	DEBUG = 0x1, unprogrammed default
-  2279                           ;	Flash Program Memory Code Protection bit
-  2280                           ;	CP = OFF, Code protection off
-  2281  2007                     	org	8199
-  2282  2007  3F72               	dw	16242
+  2262                           	psect	config
+  2263                           
+  2264                           ;Config register CONFIG @ 0x2007
+  2265                           ;	Oscillator Selection bits
+  2266                           ;	FOSC = HS, HS oscillator
+  2267                           ;	Watchdog Timer Enable bit
+  2268                           ;	WDTE = OFF, WDT disabled
+  2269                           ;	Power-up Timer Enable bit
+  2270                           ;	PWRTE = ON, PWRT enabled
+  2271                           ;	Brown-out Reset Enable bit
+  2272                           ;	BOREN = ON, BOR enabled
+  2273                           ;	Low-Voltage (Single-Supply) In-Circuit Serial Programming Enable bit
+  2274                           ;	LVP = OFF, RB3 is digital I/O, HV on MCLR must be used for programming
+  2275                           ;	Data EEPROM Memory Code Protection bit
+  2276                           ;	CPD = OFF, Data EEPROM code protection off
+  2277                           ;	Flash Program Memory Write Enable bits
+  2278                           ;	WRT = OFF, Write protection off; all program memory may be written to by EECON control
+  2279                           ;	In-Circuit Debugger Mode bit
+  2280                           ;	DEBUG = 0x1, unprogrammed default
+  2281                           ;	Flash Program Memory Code Protection bit
+  2282                           ;	CP = OFF, Code protection off
+  2283  2007                     	org	8199
+  2284  2007  3F72               	dw	16242
 
 Data Sizes:
     Strings     37
@@ -2446,7 +2446,7 @@ EEDATA             100      0       0       0        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.20 build 20200408173844 
-Symbol Table                                                                                   Mon Jan 18 16:03:56 2021
+Symbol Table                                                                                   Mon Jan 18 16:47:22 2021
 
                          pc 0002                          l51 059F                          l60 05C4  
                         l52 059A                          l45 0571                          l46 058B  

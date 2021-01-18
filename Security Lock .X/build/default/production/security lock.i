@@ -7,7 +7,7 @@
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "security lock.c" 2
-# 29 "security lock.c"
+# 28 "security lock.c"
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -1717,7 +1717,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 29 "security lock.c" 2
+# 28 "security lock.c" 2
 
 
 #pragma config FOSC = HS
@@ -1731,12 +1731,14 @@ extern __bank0 __bit __timeout;
 
 int input[5];
 
+
 int pass[4] = {
  1,
  2,
  3,
  4
 };
+
 
 void get_colm(int i)
 {
