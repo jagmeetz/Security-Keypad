@@ -1,3 +1,4 @@
 *.c linguist-detectable=true
 *.properties linguist-detectable=false
 *.mk linguist-detectable=false
+*.xml linguist-detectable=false
